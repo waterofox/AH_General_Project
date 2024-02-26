@@ -3,7 +3,7 @@ import "project_base.qbs" as ProjectBase
 
 ProjectBase
 {
-    name: "Project (Client)"
+    name: "AH-General (Client)"
 
     references:[
         "src/project_client/project_client.qbs",

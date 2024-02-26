@@ -12,7 +12,7 @@ QtApplication {
     Depends { name: "cpp" }
     Depends { name: "SharedLib" }
     Depends { name: "Yaml" }
-    Depends { name: "Qt"; submodules: ["core", "widgets", "quickwidgets"] }
+    Depends { name: "Qt"; submodules: ["core", "widgets", "quickwidgets", "gui"] }
 
     cpp.defines: project.cppDefines
     cpp.cxxLanguageVersion: project.cxxLanguageVersion
