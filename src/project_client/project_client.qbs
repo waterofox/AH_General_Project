@@ -12,7 +12,7 @@ QtApplication {
     Depends { name: "cpp" }
     Depends { name: "SharedLib" }
     Depends { name: "Yaml" }
-    Depends { name: "Qt"; submodules: ["core", "widgets", "quickwidgets", "gui"] }
+    Depends { name: "Qt"; submodules: ["core", "widgets", "quickwidgets", "gui","quick"] }
 
     cpp.defines: project.cppDefines
     cpp.cxxLanguageVersion: project.cxxLanguageVersion
@@ -22,6 +22,7 @@ QtApplication {
 
     files: [
         "main.cpp",
+        "resources.qrc",
     ]
 
 }
