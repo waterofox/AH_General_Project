@@ -2,22 +2,39 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtQml
-ApplicationWindow{
 
-    height: 300
-    width: 500
-    color: "white"
+ApplicationWindow {
     visible: true
-    title: qsTr("AH General Project Desktop Alpha")
-    RowLayout
-    {
-        anchors.fill: parent
-        id: root
+    width: 1200
+    height: 720
 
-        Text {
-            id: hello
-            text: qsTr("Hello! AND YES! I DID IT!")
-            Layout.alignment: Qt.AlignCenter
+    function setCurrentIndex(index) {rootHotel.currentIndex = index}
+
+    SwipeView
+    {
+        id: rootHotel
+        currentIndex: 0
+        anchors.fill: parent
+        SwipeView
+        {
+            id:rootMainMenu
+
+            function setCurrentIndexMainMenu(index) {rootMainMenu.currentIndex = index}
+
+            currentIndex: 0
+            width: rootHotel.width
+            height: rootHotel.height
+        }
+        SwipeView
+        {
+            id:rootGame
+
+            function setCurrentIndeGame(index) {rootGame.currentIndex = index}
+
+            currentIndex: 0
+            width: rootHotel.width
+            height: rootHotel.height
+
         }
     }
 

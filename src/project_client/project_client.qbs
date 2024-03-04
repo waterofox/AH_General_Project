@@ -23,6 +23,8 @@ QtApplication {
     files: [
         "main.cpp",
         "resources.qrc",
+        "threads/gameloopthread.cpp",
+        "threads/gameloopthread.h",
     ]
 
 }
