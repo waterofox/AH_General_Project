@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/qml">
         <file>main.qml</file>
+        <file>pages/MainMenu.qml</file>
+        <file>pages/qmldir</file>
     </qresource>
 </RCC>
