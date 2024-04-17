@@ -2,18 +2,22 @@ import QtQuick
 import QtQuick.Controls
 import QtQml
 import "pages"
+import "actors"
 ApplicationWindow {
     visible: true
-    width: 1200
-    height: 720
+    width: 600
+    height: 360
     function setCurrentIndex(index) {rootHotel.currentIndex = index}
+
 
     SwipeView
     {
         id: rootHotel
-        currentIndex: 0
+        currentIndex: 1
         anchors.fill: parent
         interactive: false
+
+        focus: true
         SwipeView
         {
             id:rootMainMenu
@@ -42,6 +46,22 @@ ApplicationWindow {
             height: rootHotel.height
             interactive: false
 
+            Rectangle
+            {
+                color:"green"
+                width: rootGame.width
+                height: rootGame.height
+
+                focus: true
+                Keys.onPressed: actoris.pressed(event)
+                Keys.onReleased: actoris.released(event)
+                ActorController
+                {
+                    id: actoris
+                    pWidth: rootGame.width
+                    pHeight: rootGame.height
+                }
+            }
         }
     }
 

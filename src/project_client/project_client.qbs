@@ -25,12 +25,11 @@ QtApplication {
     property pathList qmlImportPaths: ["pages/"]
 
     files: [
-        "actors/ahactor2d.cpp",
-        "actors/ahactor2d.h",
+        "actors/ActorController.qml",
+        "actors/models/actormodel.cpp",
+        "actors/models/actormodel.h",
         "main.cpp",
         "resources.qrc",
-        "threads/gameloopthread.cpp",
-        "threads/gameloopthread.h",
         "main.qml",
     ]
 

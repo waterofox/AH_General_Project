@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "actors/models/actormodel.h"
 //#include "threads/gameloopthread.h"
 int main(int argc, char *argv[])
 {
@@ -8,6 +9,9 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
+
+    qmlRegisterType<ActorModel>("CPP", 1, 0, "ActorModel");
+
     QQmlApplicationEngine engine;
 
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));

@@ -3,5 +3,10 @@
         <file>main.qml</file>
         <file>pages/MainMenu.qml</file>
         <file>pages/qmldir</file>
+        <file>actors/ActorController.qml</file>
+    </qresource>
+    <qresource prefix="/res">
+        <file>GameAssets/f1.png</file>
+        <file>GameAssets/f2.png</file>
     </qresource>
 </RCC>
