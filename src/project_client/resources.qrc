@@ -4,6 +4,8 @@
         <file>pages/MainMenu.qml</file>
         <file>pages/qmldir</file>
         <file>actors/ActorController.qml</file>
+        <file>actors/StaticActor.qml</file>
+        <file>pages/GameScene.qml</file>
     </qresource>
     <qresource prefix="/res">
         <file>GameAssets/f1.png</file>

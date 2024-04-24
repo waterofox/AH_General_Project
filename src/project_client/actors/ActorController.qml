@@ -5,8 +5,8 @@ Item {
 
     property int pWidth :0
     property int pHeight:0
-    property double standartScale: 640.0
-    property double standartScaleY: 480.0
+    property double standartScale: 600.0
+    property double standartScaleY: 360.0
 
     function pressed(event)
     {
@@ -37,9 +37,15 @@ Item {
         property bool moveYFlag: false
         property bool moveXFlag: false
 
+        property int collisionX: xScaled+actorMinW/2
+        property int collisionY: yScaled+actorMinH/2
+
         property int flip: 1
 
         flickableDirection: Flickable.AutoFlickIfNeeded
+
+        property int actorMinW: actorRoot.width/11
+        property int actorMinH: actorRoot.height/8
 
         function chekPressd(event)
         {
@@ -94,8 +100,8 @@ Item {
             {
                 id:actor
 
-                Layout.minimumWidth: actorArea.width/11
-                Layout.minimumHeight: actorArea.height/8
+                Layout.minimumWidth: actorRoot.actorMinW
+                Layout.minimumHeight: actorRoot.actorMinH
 
                 Layout.alignment: Qt.AlignTop
 
@@ -120,6 +126,11 @@ Item {
 
                     transform: Scale {origin.x: 28*actorArea.width/standartScale; xScale: actorRoot.flip}
 
+                }
+                Text {
+                    id: actorCords
+                    color: "black"
+                    text: "X: " + actorRoot.collisionX + " Y: " + actorRoot.collisionY
                 }
             }
             SequentialAnimation

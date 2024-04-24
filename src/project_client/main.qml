@@ -1,12 +1,14 @@
 import QtQuick
 import QtQuick.Controls
 import QtQml
+import QtQuick.Layouts
 import "pages"
-import "actors"
 ApplicationWindow {
     visible: true
     width: 600
     height: 360
+    property double standartScale: 600.0
+    property double standartScaleY: 360.0
     function setCurrentIndex(index) {rootHotel.currentIndex = index}
 
 
@@ -31,6 +33,7 @@ ApplicationWindow {
 
             MainMenu
             {
+                id:menu
                 pWidth: rootMainMenu.width
                 pHeight: rootMainMenu.height
             }
@@ -46,22 +49,18 @@ ApplicationWindow {
             height: rootHotel.height
             interactive: false
 
-            Rectangle
+            GameScene
             {
-                color:"green"
-                width: rootGame.width
-                height: rootGame.height
+                id: index1
+                pHeight: rootGame.height
+                pWidth:  rootGame.width
 
                 focus: true
-                Keys.onPressed: actoris.pressed(event)
-                Keys.onReleased: actoris.released(event)
-                ActorController
-                {
-                    id: actoris
-                    pWidth: rootGame.width
-                    pHeight: rootGame.height
-                }
+                Keys.onPressed: index1.eventPressedFilter(event)
+                Keys.onReleased:index1.eventReleasedFilter(event)
+
             }
+
         }
     }
 
