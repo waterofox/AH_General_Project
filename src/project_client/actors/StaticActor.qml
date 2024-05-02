@@ -6,6 +6,7 @@ Item {
     property double standartScale: 600.0
     property double standartScaleY: 360.0
 
+    property int cppId: 0
     property int actualXCord: 0
     property int actualYCord: 0
     property int actualSize: 10

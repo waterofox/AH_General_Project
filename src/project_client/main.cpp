@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<ActorModel>("CPP", 1, 0, "ActorModel");
-    qmlRegisterType<CollisionTargetSystem>("CPP",1,0,"CollisionTargetSystem");
+    qmlRegisterType<CollisionTargetSystem>("CTS",1,0,"CollisionTargetSystem");
 
     QQmlApplicationEngine engine;
 

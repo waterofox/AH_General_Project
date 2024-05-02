@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls
 import QtQml
 import QtQuick.Layouts
-import CPP 1.0
 import "pages"
 ApplicationWindow {
     visible: true
@@ -11,14 +10,6 @@ ApplicationWindow {
     property double standartScale: 600.0
     property double standartScaleY: 360.0
     function setCurrentIndex(index) {rootHotel.currentIndex = index}
-    Component.onCompleted:
-    {
-        console.log(testi.test())
-    }
-    CollisionTargetSystem
-    {
-        id:testi;
-    }
     SwipeView
     {
         id: rootHotel

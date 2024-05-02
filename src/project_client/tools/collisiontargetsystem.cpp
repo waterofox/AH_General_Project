@@ -55,7 +55,21 @@ bool CollisionTargetSystem::is_collision(int sides)
     return true;
 }
 
+QMap<int, CollisionTargetSystem::collision> CollisionTargetSystem::get_collisions()
+{
+    return this->collisions;
+}
+
 int CollisionTargetSystem::lenght_vector(int x, int y)
 {
     return sqrt(pow(x,2)+pow(y,2));
+}
+
+void CollisionTargetSystem::add_to_target(int x, int y, int radius, int id)
+{
+    collision newcol;
+    newcol.collision_R = radius;
+    newcol.cords.X = x;
+    newcol.cords.Y = y;
+    this->collisions.insert(id,newcol);
 }
