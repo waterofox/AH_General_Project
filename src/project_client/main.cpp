@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include "actors/models/actormodel.h"
 //#include "threads/gameloopthread.h"
+#include "tools/collisiontargetsystem.h"
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -11,6 +12,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<ActorModel>("CPP", 1, 0, "ActorModel");
+    qmlRegisterType<CollisionTargetSystem>("CPP",1,0,"CollisionTargetSystem");
 
     QQmlApplicationEngine engine;
 
@@ -21,6 +23,7 @@ int main(int argc, char *argv[])
                 QCoreApplication::exit(-1);
         }, Qt::QueuedConnection);
     engine.load(url);
+
     return app.exec();
 
     return 0;

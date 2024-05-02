@@ -32,6 +32,8 @@ QtApplication {
         "main.cpp",
         "resources.qrc",
         "main.qml",
+        "tools/collisiontargetsystem.cpp",
+        "tools/collisiontargetsystem.h",
     ]
 
 

@@ -3,8 +3,6 @@ import QtQuick.Layouts
 import CPP 1.0
 Item {
 
-    property int pWidth :0
-    property int pHeight:0
     property double standartScale: 600.0
     property double standartScaleY: 360.0
 
@@ -16,8 +14,7 @@ Item {
     {
         actorRoot.chekReleased(event)
     }
-    width:  pWidth
-    height: pHeight
+    anchors.fill: parent
     GridView
     {
         id:actorRoot
