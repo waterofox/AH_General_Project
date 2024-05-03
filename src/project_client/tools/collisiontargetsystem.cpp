@@ -6,7 +6,7 @@ bool CollisionTargetSystem::is_collision(int sides)
 {
 
     int minVector = 10000000;
-    int target_collision;
+    int target_collision = 0;
     for(int i = 0; i < this->collisions.size(); ++i)
     {
         actual_vector.X = this->collisions[i].cords.X - this->control_a_cords.X;
@@ -22,6 +22,7 @@ bool CollisionTargetSystem::is_collision(int sides)
         }
     }
     int half_r = this->collisions[target_collision].collision_R/2;
+    targeted_collision = collisions.key(collisions[target_collision]);
 
     switch (sides) {
     case side::Up:
@@ -72,4 +73,16 @@ void CollisionTargetSystem::add_to_target(int x, int y, int radius, int id)
     newcol.cords.X = x;
     newcol.cords.Y = y;
     this->collisions.insert(id,newcol);
+}
+
+int CollisionTargetSystem::get_targeted_collision()
+{
+    return this->targeted_collision;
+}
+
+void CollisionTargetSystem::reRender_coords(int xCord, int yCord, int radius, int id)
+{
+    this->collisions.remove(id);
+    add_to_target(xCord,yCord,radius,id);
+    qDebug() << "target rerender: " << id << ' ' << xCord << ' ' << yCord;
 }

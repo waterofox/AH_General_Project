@@ -34,11 +34,14 @@ Item {
         actualXCord: 200
         actualYCord: 200
         cppId: 0
+        //to do обращаться к target system при изменении координат игрока. и разрешать проход(или не разрешать)
         //to do покамест у меня квадратики не париться и сделать как есть коллизию. Потом нужно её сделать ввиде отдедьного компонента
         Component.onCompleted: {
             targetSystem.add_to_target(collisionX,collisionY,width/2,cppId)
             console.log(targetSystem.test())
         }
+        onCollisionXChanged: {targetSystem.reRender_coords(collisionX,collisionY,width/2,cppId)}
+        onCollisionYChanged: {targetSystem.reRender_coords(collisionX,collisionY,width/2,cppId)}
     }
 
     StaticActor
@@ -54,6 +57,8 @@ Item {
             targetSystem.add_to_target(collisionX,collisionY,width/2,cppId)
             console.log(targetSystem.test())
         }
+        onCollisionXChanged: {targetSystem.reRender_coords(collisionX,collisionY,width/2,cppId)}
+        onCollisionYChanged: {targetSystem.reRender_coords(collisionX,collisionY,width/2,cppId)}
     }
 
     StaticActor
@@ -69,6 +74,8 @@ Item {
             targetSystem.add_to_target(collisionX,collisionY,width/2,cppId)
             console.log(targetSystem.test())
         }
+        onCollisionXChanged: {targetSystem.reRender_coords(collisionX,collisionY,width/2,cppId)}
+        onCollisionYChanged: {targetSystem.reRender_coords(collisionX,collisionY,width/2,cppId)}
     }
 
     ActorController
