@@ -18,6 +18,12 @@ Item {
 
     signal newCollision(int x, int y)
 
+    Component.onCompleted: {
+        targetSystem.add_to_target(collisionX,collisionY,width/2,cppId)
+        console.log(targetSystem.test())
+    }
+    onCollisionXChanged: {targetSystem.reRender_coords(collisionX,collisionY,actor.width/2,cppId)}
+    onCollisionYChanged: {targetSystem.reRender_coords(collisionX,collisionY,actor.width/2,cppId)}
 
     anchors.fill: parent
     RowLayout
@@ -27,6 +33,7 @@ Item {
 
         Rectangle
         {
+            id: actor
             color:  actualColor
 
             Layout.maximumHeight: actualSize*stArea.height/standartScaleY
