@@ -11,11 +11,12 @@ Item {
 
     function eventPressedFilter(event)
     {
-        actoris.pressed(event);
+        player.set(event);
     }
     function eventReleasedFilter(event)
     {
-        actoris.released(event)
+        player.set2(event);
+
     }
 
     Component.onCompleted: {}

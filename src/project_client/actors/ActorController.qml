@@ -19,8 +19,90 @@ Item {
     property int scaledW: actualW*actorRoot.width/  standartScale
     property int scaledH: actualH*actorRoot.height/standartScaleY
 
+    property bool nstart: false
 
-
+    property bool rightMove: false
+    property bool leftMove:  false
+    property bool upMove:    false
+    property bool downMove:  false
+    onActualXChanged: {
+        if(scaledX == 250)
+        {
+           console.log(scaledX,"collision")
+        }
+    }
+    function set(event)
+    {
+        if(event.key === Qt.Key_D){rightMove = true;return}
+        if(event.key === Qt.Key_A){leftMove  = true;return}
+        if(event.key === Qt.Key_W){upMove = true;return}
+        if(event.key === Qt.Key_S){downMove  = true;return}
+    }
+    function set2(event)
+    {
+        if(event.key === Qt.Key_D || event.key === Qt.Key_A)
+        {
+            rightMove = false
+            leftMove = false
+        }
+        if(event.key === Qt.Key_W || event.key === Qt.Key_S)
+        {
+            upMove = false
+            downMove = false
+        }
+    }
+    SequentialAnimation
+    {
+        id:toRight
+        PropertyAnimation {
+            target: actorRoot
+            property: "actualX"
+            duration: 1
+            from: actualX
+            to: actualX+1*5
+        }
+        loops: Animation.Infinite
+        running: rightMove
+    }
+    SequentialAnimation
+    {
+        id:toLeft
+        PropertyAnimation {
+            target: actorRoot
+            property: "actualX"
+            duration: 1
+            from: actualX
+            to: actualX-1*5
+        }
+        loops: Animation.Infinite
+        running: leftMove
+    }
+    SequentialAnimation
+    {
+        id:toUp
+        PropertyAnimation {
+            target: actorRoot
+            property: "actualY"
+            duration: 1
+            from: actualY
+            to: actualY-1*5
+        }
+        loops: Animation.Infinite
+        running: upMove
+    }
+    SequentialAnimation
+    {
+        id:toDown
+        PropertyAnimation {
+            target: actorRoot
+            property: "actualY"
+            duration: 1
+            from: actualY
+            to: actualY+1*5
+        }
+        loops: Animation.Infinite
+        running: downMove
+    }
     RowLayout
     {
         id:actorArea
