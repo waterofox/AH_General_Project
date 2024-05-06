@@ -1,6 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include "actors/models/actormodel.h"
+//#include "actors/models/actormodel.h"
 //#include "threads/gameloopthread.h"
 #include "tools/collisiontargetsystem.h"
 int main(int argc, char *argv[])
@@ -11,7 +11,6 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<ActorModel>("CPP", 1, 0, "ActorModel");
     qmlRegisterType<CollisionTargetSystem>("CTS",1,0,"CollisionTargetSystem");
 
     QQmlApplicationEngine engine;

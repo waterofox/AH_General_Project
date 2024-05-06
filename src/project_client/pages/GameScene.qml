@@ -35,4 +35,12 @@ Item {
         actualYCord: 200
         cppId: 0
     }
+    ActorController
+    {
+        id:player
+        actualW: 50
+        actualH: 50
+        actualX: 100
+        actualY: 100
+    }
 }
