@@ -19,18 +19,16 @@ Item {
     property int scaledW: actualW*actorRoot.width/  standartScale
     property int scaledH: actualH*actorRoot.height/standartScaleY
 
+    property int actualSpeed: 0
+    property int scaledSpeed: actualSpeed*actorRoot.width/standartScale
+
     property bool nstart: false
 
     property bool rightMove: false
     property bool leftMove:  false
     property bool upMove:    false
     property bool downMove:  false
-    onActualXChanged: {
-        if(scaledX == 250)
-        {
-           console.log(scaledX,"collision")
-        }
-    }
+
     function set(event)
     {
         if(event.key === Qt.Key_D){rightMove = true;return}
@@ -59,7 +57,7 @@ Item {
             property: "actualX"
             duration: 1
             from: actualX
-            to: actualX+1*5
+            to: actualX+1*scaledSpeed
         }
         loops: Animation.Infinite
         running: rightMove
@@ -72,7 +70,7 @@ Item {
             property: "actualX"
             duration: 1
             from: actualX
-            to: actualX-1*5
+            to: actualX-1*scaledSpeed
         }
         loops: Animation.Infinite
         running: leftMove
@@ -85,7 +83,7 @@ Item {
             property: "actualY"
             duration: 1
             from: actualY
-            to: actualY-1*5
+            to: actualY-1*scaledSpeed
         }
         loops: Animation.Infinite
         running: upMove
@@ -98,7 +96,7 @@ Item {
             property: "actualY"
             duration: 1
             from: actualY
-            to: actualY+1*5
+            to: actualY+1*scaledSpeed
         }
         loops: Animation.Infinite
         running: downMove

@@ -43,5 +43,6 @@ Item {
         actualH: 50
         actualX: 100
         actualY: 100
+        actualSpeed: 5
     }
 }
