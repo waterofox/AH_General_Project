@@ -27,8 +27,6 @@ QtApplication {
     files: [
         "actors/ActorController.qml",
         "actors/StaticActor.qml",
-        "actors/models/actormodel.cpp",
-        "actors/models/actormodel.h",
         "main.cpp",
         "resources.qrc",
         "main.qml",

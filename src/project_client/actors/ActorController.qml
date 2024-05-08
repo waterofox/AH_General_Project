@@ -29,12 +29,94 @@ Item {
     property bool upMove:    false
     property bool downMove:  false
 
+    property bool collisionRight: false
+    property bool collisionLeft: false
+    property bool collisionUp: false
+    property bool collisionDown: false
+
+    property int actualSide: 2
+
+    onScaledXChanged: {
+        if(actualSide == 2)
+        {
+            targetSystem.update_actor_cordX(scaledX+scaledW)
+            targetSystem.update_actor_cordY(scaledY+scaledH)
+            if(targetSystem.is_collision(2))
+            {
+                collisionRight = true
+                rightMove = false
+                return;
+            }
+        }
+        if(actualSide == 3)
+        {
+            targetSystem.update_actor_cordX(scaledX)
+            targetSystem.update_actor_cordY(scaledY+scaledH)
+            if(targetSystem.is_collision(3))
+            {
+                collisionLeft = true
+                leftMove = false
+                return;
+            }
+        }
+
+    }
+    onScaledYChanged: {
+        if(actualSide == 0)
+        {
+            targetSystem.update_actor_cordY(scaledY)
+            targetSystem.update_actor_cordX(scaledX+scaledW/2)
+            if(targetSystem.is_collision(0))
+            {
+                collisionUp = true
+                upMove = false
+                return;
+            }
+        }
+        if(actualSide == 1)
+        {
+            targetSystem.update_actor_cordY(scaledY+scaledH)
+            targetSystem.update_actor_cordX(scaledX+scaledW/2)
+            if(targetSystem.is_collision(1))
+            {
+                collisionDown = true
+                downMove = false
+                return;
+            }
+        }
+    }
+    Component.onCompleted: {
+        disabledCollisionBlock()
+    }
+    function disabledCollisionBlock()
+    {
+        collisionDown = false
+        collisionRight = false
+        collisionUp = false
+        collisionLeft = false
+    }
     function set(event)
     {
-        if(event.key === Qt.Key_D){rightMove = true;return}
-        if(event.key === Qt.Key_A){leftMove  = true;return}
-        if(event.key === Qt.Key_W){upMove = true;return}
-        if(event.key === Qt.Key_S){downMove  = true;return}
+        if(event.key === Qt.Key_D){
+            if(!collisionRight){
+                rightMove = true; disabledCollisionBlock(); actualSide = 2;return;
+            }
+        }
+        if(event.key === Qt.Key_A){
+            if(!collisionLeft){
+                leftMove = true; disabledCollisionBlock(); actualSide = 3; return;
+            }
+        }
+        if(event.key === Qt.Key_W){
+            if(!collisionUp){
+                upMove = true; disabledCollisionBlock(); actualSide = 0; return;
+            }
+        }
+        if(event.key === Qt.Key_S){
+            if(!collisionDown){
+                downMove = true; disabledCollisionBlock();actualSide = 1; return;
+            }
+        }
     }
     function set2(event)
     {
@@ -123,8 +205,6 @@ Item {
                 width: 3
                 color: "red"
             }
-
-
         }
     }
 }

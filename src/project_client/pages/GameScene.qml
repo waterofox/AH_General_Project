@@ -30,11 +30,31 @@ Item {
 
     StaticActor
     {
-        id:actorst
+        id:actor1
         actualSize: 100
         actualXCord: 200
         actualYCord: 200
         cppId: 0
+    }
+
+    StaticActor
+    {
+        id:actor2
+        actualSize: 50
+        actualXCord: 50
+        actualYCord: 50
+        cppId: 1
+        actualColor: "blue"
+    }
+
+    StaticActor
+    {
+        id:actor3
+        actualSize: 70
+        actualXCord: 250
+        actualYCord: 50
+        cppId: 2
+        actualColor: "blue"
     }
     ActorController
     {

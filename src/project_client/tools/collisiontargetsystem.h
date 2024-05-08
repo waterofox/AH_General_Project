@@ -65,6 +65,8 @@ public:
     Q_INVOKABLE void add_to_target(int x, int y, int radius, int id);
     Q_INVOKABLE int get_targeted_collision();
     Q_INVOKABLE void reRender_coords(int xCord, int yCord, int radius, int id);
+    Q_INVOKABLE void update_actor_cordX(int X){this->control_a_cords.X = X;}
+    Q_INVOKABLE void update_actor_cordY(int Y){this->control_a_cords.Y = Y;}
 
     collision& operator=(collision&a)
     {

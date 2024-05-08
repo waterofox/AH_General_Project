@@ -12,8 +12,6 @@ bool CollisionTargetSystem::is_collision(int sides)
         actual_vector.X = this->collisions[i].cords.X - this->control_a_cords.X;
         actual_vector.Y = this->collisions[i].cords.Y - this->control_a_cords.Y;
 
-
-
         this->buffer_vector = lenght_vector(actual_vector.X,actual_vector.Y);
         if (this->buffer_vector <= minVector)
         {
@@ -21,39 +19,29 @@ bool CollisionTargetSystem::is_collision(int sides)
             minVector = this->buffer_vector;
         }
     }
-    int half_r = this->collisions[target_collision].collision_R/2;
+
     targeted_collision = collisions.key(collisions[target_collision]);
+    actual_vector.X = this->collisions.value(targeted_collision).cords.X - this->control_a_cords.X;
+    actual_vector.Y = this->collisions.value(targeted_collision).cords.Y - this->control_a_cords.Y;
 
     switch (sides) {
     case side::Up:
-        if(lenght_vector(actual_vector.X,actual_vector.Y-half_r) <= this->collisions[target_collision].collision_R)
-        {
-            return false;
-        }
+        if(lenght_vector(actual_vector.X,actual_vector.Y) <= this->collisions[targeted_collision].collision_R){return true;}
         break;
     case side::Down:
-        if(lenght_vector(actual_vector.X,actual_vector.Y+half_r) <= this->collisions[target_collision].collision_R)
-        {
-            return false;
-        }
+        if(lenght_vector(actual_vector.X,actual_vector.Y) <= this->collisions[targeted_collision].collision_R){return true;}
         break;
     case side::Right:
-        if(lenght_vector(actual_vector.X+half_r,actual_vector.Y) <= this->collisions[target_collision].collision_R)
-        {
-            return false;
-        }
+        if(lenght_vector(actual_vector.X,actual_vector.Y) <= this->collisions[targeted_collision].collision_R){return true;}
         break;
     case side::Left:
-        if(lenght_vector(actual_vector.X-half_r,actual_vector.Y) <= this->collisions[target_collision].collision_R)
-        {
-            return false;
-        }
+        if(lenght_vector(actual_vector.X,actual_vector.Y) <= this->collisions[targeted_collision].collision_R){return true;}
         break;
     default:
         break;
     }
 
-    return true;
+    return false;
 }
 
 QMap<int, CollisionTargetSystem::collision> CollisionTargetSystem::get_collisions()
@@ -84,5 +72,4 @@ void CollisionTargetSystem::reRender_coords(int xCord, int yCord, int radius, in
 {
     this->collisions.remove(id);
     add_to_target(xCord,yCord,radius,id);
-    qDebug() << "target rerender: " << id << ' ' << xCord << ' ' << yCord;
 }
