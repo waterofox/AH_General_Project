@@ -18,6 +18,11 @@ Item {
         player.set2(event);
 
     }
+    Rectangle
+    {
+        anchors.fill: parent
+        color: "gray"
+    }
 
     Component.onCompleted: {}
     CollisionTargetSystem
@@ -63,6 +68,6 @@ Item {
         actualH: 50
         actualX: 100
         actualY: 100
-        actualSpeed: 5
+        actualSpeed: 1
     }
 }

@@ -7,8 +7,9 @@
         <file>actors/StaticActor.qml</file>
         <file>pages/GameScene.qml</file>
     </qresource>
-    <qresource prefix="/res">
-        <file>GameAssets/f1.png</file>
-        <file>GameAssets/f2.png</file>
+    <qresource prefix="/res"/>
+    <qresource prefix="/ani">
+        <file>GameAssets/animations/movef.gif</file>
+        <file>GameAssets/animations/moveb.gif</file>
     </qresource>
 </RCC>
