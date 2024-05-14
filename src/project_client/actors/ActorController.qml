@@ -49,11 +49,43 @@ Item {
                 rightMove = false
                 return;
             }
+            targetSystem.update_actor_cordX(scaledX+scaledW)
+            targetSystem.update_actor_cordY(scaledY+scaledH/2)
+            if(targetSystem.is_collision(2))
+            {
+                collisionRight = true
+                rightMove = false
+                return;
+            }
+            targetSystem.update_actor_cordX(scaledX+scaledW)
+            targetSystem.update_actor_cordY(scaledY)
+            if(targetSystem.is_collision(2))
+            {
+                collisionRight = true
+                rightMove = false
+                return;
+            }
         }
         if(actualSide == 3)
         {
             targetSystem.update_actor_cordX(scaledX)
             targetSystem.update_actor_cordY(scaledY+scaledH)
+            if(targetSystem.is_collision(3))
+            {
+                collisionLeft = true
+                leftMove = false
+                return;
+            }
+            targetSystem.update_actor_cordX(scaledX)
+            targetSystem.update_actor_cordY(scaledY+scaledH/2)
+            if(targetSystem.is_collision(3))
+            {
+                collisionLeft = true
+                leftMove = false
+                return;
+            }
+            targetSystem.update_actor_cordX(scaledX)
+            targetSystem.update_actor_cordY(scaledY)
             if(targetSystem.is_collision(3))
             {
                 collisionLeft = true
@@ -76,12 +108,45 @@ Item {
                 upMove = false
                 return;
             }
+            targetSystem.update_actor_cordY(scaledY)
+            targetSystem.update_actor_cordX(scaledX+scaledW)
+            if(targetSystem.is_collision(0))
+            {
+                collisionUp = true
+                upMove = false
+                return;
+            }
+            targetSystem.update_actor_cordY(scaledY)
+            targetSystem.update_actor_cordX(scaledX)
+            if(targetSystem.is_collision(0))
+            {
+                collisionUp = true
+                upMove = false
+                return;
+            }
+
         }
         if(actualSide == 1)
         {
             actorSprite.source = "qrc:/ani/GameAssets/animations/movef.gif"
             targetSystem.update_actor_cordY(scaledY+scaledH)
             targetSystem.update_actor_cordX(scaledX+scaledW/2)
+            if(targetSystem.is_collision(1))
+            {
+                collisionDown = true
+                downMove = false
+                return;
+            }
+            targetSystem.update_actor_cordY(scaledY+scaledH)
+            targetSystem.update_actor_cordX(scaledX)
+            if(targetSystem.is_collision(1))
+            {
+                collisionDown = true
+                downMove = false
+                return;
+            }
+            targetSystem.update_actor_cordY(scaledY+scaledH)
+            targetSystem.update_actor_cordX(scaledX+scaledW)
             if(targetSystem.is_collision(1))
             {
                 collisionDown = true
@@ -224,34 +289,8 @@ Item {
                     Layout.alignment: Qt.AlignTop
 
                     Layout.topMargin: -50*actorArea.height/standartScaleY
-                    antialiasing: false
-
                     paused: anis
-
                     onPausedChanged: actorSprite.currentFrame = 2
-                    //currentFrame: 2
-                }
-//                Image {
-//                    id: acrotSprite
-//                    source: "qrc:/res/GameAssets/test.png"
-//                    Layout.minimumHeight: 100*actorArea.height/standartScaleY
-//                    Layout.minimumWidth: 100*actorArea.width/standartScale
-
-//                    Layout.maximumHeight: 100*actorArea.height/standartScaleY
-//                    Layout.maximumWidth: 100*actorArea.width/standartScale
-//                    Layout.alignment: Qt.AlignTop
-
-//                    Layout.topMargin: -50*actorArea.height/standartScaleY
-//                    antialiasing: false
-//                }
-            }
-            Rectangle{
-                anchors.fill: actorSpriteRoot
-                color: "transparent"
-                border
-                {
-                    color: "black"
-                    width: 3
                 }
             }
             Layout.alignment: Qt.AlignTop
