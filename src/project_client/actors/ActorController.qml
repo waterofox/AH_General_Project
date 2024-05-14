@@ -34,75 +34,72 @@ Item {
     property bool collisionUp: false
     property bool collisionDown: false
 
-    property int actualSide: 2
+    property int actualSideX: 2
+    property int actualSideY: 3
+
 
     property bool anis: true
 
-    onScaledXChanged: {
-        if(actualSide == 2)
-        {
-            targetSystem.update_actor_cordX(scaledX+scaledW)
-            targetSystem.update_actor_cordY(scaledY+scaledH)
-            if(targetSystem.is_collision(2))
-            {
-                collisionRight = true
-                rightMove = false
-                return;
-            }
-            targetSystem.update_actor_cordX(scaledX+scaledW)
-            targetSystem.update_actor_cordY(scaledY+scaledH/2)
-            if(targetSystem.is_collision(2))
-            {
-                collisionRight = true
-                rightMove = false
-                return;
-            }
-            targetSystem.update_actor_cordX(scaledX+scaledW)
-            targetSystem.update_actor_cordY(scaledY)
-            if(targetSystem.is_collision(2))
-            {
-                collisionRight = true
-                rightMove = false
-                return;
-            }
-        }
-        if(actualSide == 3)
-        {
-            targetSystem.update_actor_cordX(scaledX)
-            targetSystem.update_actor_cordY(scaledY+scaledH)
-            if(targetSystem.is_collision(3))
-            {
-                collisionLeft = true
-                leftMove = false
-                return;
-            }
-            targetSystem.update_actor_cordX(scaledX)
-            targetSystem.update_actor_cordY(scaledY+scaledH/2)
-            if(targetSystem.is_collision(3))
-            {
-                collisionLeft = true
-                leftMove = false
-                return;
-            }
-            targetSystem.update_actor_cordX(scaledX)
-            targetSystem.update_actor_cordY(scaledY)
-            if(targetSystem.is_collision(3))
-            {
-                collisionLeft = true
-                leftMove = false
-                return;
-            }
-        }
+    onActualSideYChanged:
+    {
+        if(actualSideY == 0) {actorSprite.source = "qrc:/ani/GameAssets/animations/moveb.gif"; return;}
+        if(actualSideY == 1) {actorSprite.source = "qrc:/ani/GameAssets/animations/movef.gif"; return;}
+    }
 
+    onScaledXChanged: {
+            targetSystem.update_actor_cordX(scaledX+scaledW)
+            targetSystem.update_actor_cordY(scaledY+scaledH)
+            if(targetSystem.is_collision())
+            {
+                collisionRight = true
+                rightMove = false
+                return;
+            }
+            targetSystem.update_actor_cordX(scaledX+scaledW)
+            targetSystem.update_actor_cordY(scaledY+scaledH/2)
+            if(targetSystem.is_collision())
+            {
+                collisionRight = true
+                rightMove = false
+                return;
+            }
+            targetSystem.update_actor_cordX(scaledX+scaledW)
+            targetSystem.update_actor_cordY(scaledY)
+            if(targetSystem.is_collision())
+            {
+                collisionRight = true
+                rightMove = false
+                return;
+            }
+            targetSystem.update_actor_cordX(scaledX)
+            targetSystem.update_actor_cordY(scaledY+scaledH)
+            if(targetSystem.is_collision())
+            {
+                collisionLeft = true
+                leftMove = false
+                return;
+            }
+            targetSystem.update_actor_cordX(scaledX)
+            targetSystem.update_actor_cordY(scaledY+scaledH/2)
+            if(targetSystem.is_collision())
+            {
+                collisionLeft = true
+                leftMove = false
+                return;
+            }
+            targetSystem.update_actor_cordX(scaledX)
+            targetSystem.update_actor_cordY(scaledY)
+            if(targetSystem.is_collision())
+            {
+                collisionLeft = true
+                leftMove = false
+                return;
+            }
     }
     onScaledYChanged: {
-        //anis = true
-        if(actualSide == 0)
-        {
-            actorSprite.source = "qrc:/ani/GameAssets/animations/moveb.gif"
             targetSystem.update_actor_cordY(scaledY)
             targetSystem.update_actor_cordX(scaledX+scaledW/2)
-            if(targetSystem.is_collision(0))
+            if(targetSystem.is_collision())
             {
                 collisionUp = true
                 upMove = false
@@ -110,7 +107,7 @@ Item {
             }
             targetSystem.update_actor_cordY(scaledY)
             targetSystem.update_actor_cordX(scaledX+scaledW)
-            if(targetSystem.is_collision(0))
+            if(targetSystem.is_collision())
             {
                 collisionUp = true
                 upMove = false
@@ -118,20 +115,15 @@ Item {
             }
             targetSystem.update_actor_cordY(scaledY)
             targetSystem.update_actor_cordX(scaledX)
-            if(targetSystem.is_collision(0))
+            if(targetSystem.is_collision())
             {
                 collisionUp = true
                 upMove = false
                 return;
             }
-
-        }
-        if(actualSide == 1)
-        {
-            actorSprite.source = "qrc:/ani/GameAssets/animations/movef.gif"
             targetSystem.update_actor_cordY(scaledY+scaledH)
             targetSystem.update_actor_cordX(scaledX+scaledW/2)
-            if(targetSystem.is_collision(1))
+            if(targetSystem.is_collision())
             {
                 collisionDown = true
                 downMove = false
@@ -139,7 +131,7 @@ Item {
             }
             targetSystem.update_actor_cordY(scaledY+scaledH)
             targetSystem.update_actor_cordX(scaledX)
-            if(targetSystem.is_collision(1))
+            if(targetSystem.is_collision())
             {
                 collisionDown = true
                 downMove = false
@@ -147,13 +139,12 @@ Item {
             }
             targetSystem.update_actor_cordY(scaledY+scaledH)
             targetSystem.update_actor_cordX(scaledX+scaledW)
-            if(targetSystem.is_collision(1))
+            if(targetSystem.is_collision())
             {
                 collisionDown = true
                 downMove = false
                 return;
             }
-        }
     }
     Component.onCompleted: {
         disabledCollisionBlock()
@@ -170,22 +161,22 @@ Item {
         if (event.isAutoRepeat){return}
         if(event.key === Qt.Key_D){
             if(!collisionRight){
-                rightMove = true;  anis = false; disabledCollisionBlock(); actualSide = 2;return;
+                rightMove = true;  anis = false; disabledCollisionBlock(); actualSideX = 2;return;
             }
         }
         if(event.key === Qt.Key_A){
             if(!collisionLeft){
-                leftMove = true;   anis = false; disabledCollisionBlock(); actualSide = 3; return;
+                leftMove = true;   anis = false; disabledCollisionBlock(); actualSideX = 3; return;
             }
         }
         if(event.key === Qt.Key_W){
             if(!collisionUp){
-                upMove = true;   anis = false; disabledCollisionBlock(); actualSide = 0; return;
+                upMove = true;   anis = false; disabledCollisionBlock(); actualSideY = 0; return;
             }
         }
         if(event.key === Qt.Key_S){
             if(!collisionDown){
-                downMove = true;   anis = false; disabledCollisionBlock();actualSide = 1; return;
+                downMove = true;   anis = false; disabledCollisionBlock();actualSideY = 1; return;
             }
         }
     }
