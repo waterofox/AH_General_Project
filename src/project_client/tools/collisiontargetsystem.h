@@ -59,7 +59,7 @@ public:
     CollisionTargetSystem();
     int lenght_vector(int x ,int y);
 
-    Q_INVOKABLE bool is_collision(int);
+    Q_INVOKABLE bool is_collision();
    // Q_INVOKABLE int test() {return this->collisions.size();}
     Q_INVOKABLE QMap<int,collision> get_collisions();
     Q_INVOKABLE void add_to_target(int x, int y, int radius, int id);

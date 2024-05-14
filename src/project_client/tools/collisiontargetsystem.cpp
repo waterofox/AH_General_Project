@@ -2,7 +2,7 @@
 
 CollisionTargetSystem::CollisionTargetSystem() {}
 
-bool CollisionTargetSystem::is_collision(int sides)
+bool CollisionTargetSystem::is_collision()
 {
 
     int minVector = 10000000;
@@ -24,23 +24,7 @@ bool CollisionTargetSystem::is_collision(int sides)
     actual_vector.X = this->collisions.value(targeted_collision).cords.X - this->control_a_cords.X;
     actual_vector.Y = this->collisions.value(targeted_collision).cords.Y - this->control_a_cords.Y;
 
-    switch (sides) {
-    case side::Up:
-        if(lenght_vector(actual_vector.X,actual_vector.Y) <= this->collisions[targeted_collision].collision_R){return true;}
-        break;
-    case side::Down:
-        if(lenght_vector(actual_vector.X,actual_vector.Y) <= this->collisions[targeted_collision].collision_R){return true;}
-        break;
-    case side::Right:
-        if(lenght_vector(actual_vector.X,actual_vector.Y) <= this->collisions[targeted_collision].collision_R){return true;}
-        break;
-    case side::Left:
-        if(lenght_vector(actual_vector.X,actual_vector.Y) <= this->collisions[targeted_collision].collision_R){return true;}
-        break;
-    default:
-        break;
-    }
-
+    if(lenght_vector(actual_vector.X,actual_vector.Y) <= this->collisions[targeted_collision].collision_R){return true;}
     return false;
 }
 
