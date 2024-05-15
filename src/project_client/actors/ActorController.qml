@@ -45,106 +45,113 @@ Item {
         if(actualSideY == 0) {actorSprite.source = "qrc:/ani/GameAssets/animations/moveb.gif"; return;}
         if(actualSideY == 1) {actorSprite.source = "qrc:/ani/GameAssets/animations/movef.gif"; return;}
     }
-
+    function ch_collisionX()
+    {
+        targetSystem.update_actor_cordX(scaledX+scaledW)
+        targetSystem.update_actor_cordY(scaledY+scaledH)
+        if(targetSystem.is_collision())
+        {
+            collisionRight = true
+            rightMove = false
+            return;
+        }
+        targetSystem.update_actor_cordX(scaledX+scaledW)
+        targetSystem.update_actor_cordY(scaledY+scaledH/2)
+        if(targetSystem.is_collision())
+        {
+            collisionRight = true
+            rightMove = false
+            return;
+        }
+        targetSystem.update_actor_cordX(scaledX+scaledW)
+        targetSystem.update_actor_cordY(scaledY)
+        if(targetSystem.is_collision())
+        {
+            collisionRight = true
+            rightMove = false
+            return;
+        }
+        targetSystem.update_actor_cordX(scaledX)
+        targetSystem.update_actor_cordY(scaledY+scaledH)
+        if(targetSystem.is_collision())
+        {
+            collisionLeft = true
+            leftMove = false
+            return;
+        }
+        targetSystem.update_actor_cordX(scaledX)
+        targetSystem.update_actor_cordY(scaledY+scaledH/2)
+        if(targetSystem.is_collision())
+        {
+            collisionLeft = true
+            leftMove = false
+            return;
+        }
+        targetSystem.update_actor_cordX(scaledX)
+        targetSystem.update_actor_cordY(scaledY)
+        if(targetSystem.is_collision())
+        {
+            collisionLeft = true
+            leftMove = false
+            return;
+        }
+    }
+    function ch_collisionY()
+    {
+        targetSystem.update_actor_cordY(scaledY)
+        targetSystem.update_actor_cordX(scaledX+scaledW/2)
+        if(targetSystem.is_collision())
+        {
+            collisionUp = true
+            upMove = false
+            return;
+        }
+        targetSystem.update_actor_cordY(scaledY)
+        targetSystem.update_actor_cordX(scaledX+scaledW)
+        if(targetSystem.is_collision())
+        {
+            collisionUp = true
+            upMove = false
+            return;
+        }
+        targetSystem.update_actor_cordY(scaledY)
+        targetSystem.update_actor_cordX(scaledX)
+        if(targetSystem.is_collision())
+        {
+            collisionUp = true
+            upMove = false
+            return;
+        }
+        targetSystem.update_actor_cordY(scaledY+scaledH)
+        targetSystem.update_actor_cordX(scaledX+scaledW/2)
+        if(targetSystem.is_collision())
+        {
+            collisionDown = true
+            downMove = false
+            return;
+        }
+        targetSystem.update_actor_cordY(scaledY+scaledH)
+        targetSystem.update_actor_cordX(scaledX)
+        if(targetSystem.is_collision())
+        {
+            collisionDown = true
+            downMove = false
+            return;
+        }
+        targetSystem.update_actor_cordY(scaledY+scaledH)
+        targetSystem.update_actor_cordX(scaledX+scaledW)
+        if(targetSystem.is_collision())
+        {
+            collisionDown = true
+            downMove = false
+            return;
+        }
+    }
     onScaledXChanged: {
-            targetSystem.update_actor_cordX(scaledX+scaledW)
-            targetSystem.update_actor_cordY(scaledY+scaledH)
-            if(targetSystem.is_collision())
-            {
-                collisionRight = true
-                rightMove = false
-                return;
-            }
-            targetSystem.update_actor_cordX(scaledX+scaledW)
-            targetSystem.update_actor_cordY(scaledY+scaledH/2)
-            if(targetSystem.is_collision())
-            {
-                collisionRight = true
-                rightMove = false
-                return;
-            }
-            targetSystem.update_actor_cordX(scaledX+scaledW)
-            targetSystem.update_actor_cordY(scaledY)
-            if(targetSystem.is_collision())
-            {
-                collisionRight = true
-                rightMove = false
-                return;
-            }
-            targetSystem.update_actor_cordX(scaledX)
-            targetSystem.update_actor_cordY(scaledY+scaledH)
-            if(targetSystem.is_collision())
-            {
-                collisionLeft = true
-                leftMove = false
-                return;
-            }
-            targetSystem.update_actor_cordX(scaledX)
-            targetSystem.update_actor_cordY(scaledY+scaledH/2)
-            if(targetSystem.is_collision())
-            {
-                collisionLeft = true
-                leftMove = false
-                return;
-            }
-            targetSystem.update_actor_cordX(scaledX)
-            targetSystem.update_actor_cordY(scaledY)
-            if(targetSystem.is_collision())
-            {
-                collisionLeft = true
-                leftMove = false
-                return;
-            }
+        ch_collisionX();
     }
     onScaledYChanged: {
-            targetSystem.update_actor_cordY(scaledY)
-            targetSystem.update_actor_cordX(scaledX+scaledW/2)
-            if(targetSystem.is_collision())
-            {
-                collisionUp = true
-                upMove = false
-                return;
-            }
-            targetSystem.update_actor_cordY(scaledY)
-            targetSystem.update_actor_cordX(scaledX+scaledW)
-            if(targetSystem.is_collision())
-            {
-                collisionUp = true
-                upMove = false
-                return;
-            }
-            targetSystem.update_actor_cordY(scaledY)
-            targetSystem.update_actor_cordX(scaledX)
-            if(targetSystem.is_collision())
-            {
-                collisionUp = true
-                upMove = false
-                return;
-            }
-            targetSystem.update_actor_cordY(scaledY+scaledH)
-            targetSystem.update_actor_cordX(scaledX+scaledW/2)
-            if(targetSystem.is_collision())
-            {
-                collisionDown = true
-                downMove = false
-                return;
-            }
-            targetSystem.update_actor_cordY(scaledY+scaledH)
-            targetSystem.update_actor_cordX(scaledX)
-            if(targetSystem.is_collision())
-            {
-                collisionDown = true
-                downMove = false
-                return;
-            }
-            targetSystem.update_actor_cordY(scaledY+scaledH)
-            targetSystem.update_actor_cordX(scaledX+scaledW)
-            if(targetSystem.is_collision())
-            {
-                collisionDown = true
-                downMove = false
-                return;
-            }
+        ch_collisionY();
     }
     Component.onCompleted: {
         disabledCollisionBlock()
@@ -160,22 +167,22 @@ Item {
     {
         if (event.isAutoRepeat){return}
         if(event.key === Qt.Key_D){
-            if(!collisionRight){
+            if(!collisionRight || !targetSystem.is_collision()){
                 rightMove = true;  anis = false; disabledCollisionBlock(); actualSideX = 2;return;
             }
         }
         if(event.key === Qt.Key_A){
-            if(!collisionLeft){
+            if(!collisionLeft || !targetSystem.is_collision()){
                 leftMove = true;   anis = false; disabledCollisionBlock(); actualSideX = 3; return;
             }
         }
         if(event.key === Qt.Key_W){
-            if(!collisionUp){
+            if(!collisionUp || !targetSystem.is_collision()){
                 upMove = true;   anis = false; disabledCollisionBlock(); actualSideY = 0; return;
             }
         }
         if(event.key === Qt.Key_S){
-            if(!collisionDown){
+            if(!collisionDown || !targetSystem.is_collision()){
                 downMove = true;   anis = false; disabledCollisionBlock();actualSideY = 1; return;
             }
         }

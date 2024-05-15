@@ -64,7 +64,7 @@ Item {
     ActorController
     {
         id:player
-        actualW: 50
+        actualW: 30
         actualH: 50
         actualX: 100
         actualY: 100
