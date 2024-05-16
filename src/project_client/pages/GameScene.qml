@@ -36,20 +36,23 @@ Item {
     StaticActor
     {
         id:actor1
-        actualSize: 100
+        actualSize: 55
         actualXCord: 200
         actualYCord: 200
         cppId: 0
+        actualColor: "yellow"
+        activeCollision:  false
     }
 
     StaticActor
     {
         id:actor2
         actualSize: 50
-        actualXCord: 50
+        actualXCord: 200
         actualYCord: 50
         cppId: 1
         actualColor: "blue"
+        activeCollision: true
     }
 
     StaticActor
@@ -60,6 +63,7 @@ Item {
         actualYCord: 50
         cppId: 2
         actualColor: "blue"
+        activeCollision: true
     }
     ActorController
     {
@@ -69,5 +73,7 @@ Item {
         actualX: 100
         actualY: 100
         actualSpeed: 1
+        moveDownSprite: "qrc:/ani/GameAssets/animations/movef.gif"
+        moveUpSprite: "qrc:/ani/GameAssets/animations/moveb.gif"
     }
 }

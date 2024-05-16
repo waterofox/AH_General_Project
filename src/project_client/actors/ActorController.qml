@@ -40,10 +40,14 @@ Item {
 
     property bool anis: true
 
+    property string moveUpSprite: "none"
+    property string moveDownSprite: "none"
+    property string moveLNRSprite: "none"
+
     onActualSideYChanged:
     {
-        if(actualSideY == 0) {actorSprite.source = "qrc:/ani/GameAssets/animations/moveb.gif"; return;}
-        if(actualSideY == 1) {actorSprite.source = "qrc:/ani/GameAssets/animations/movef.gif"; return;}
+        if(actualSideY == 0) {actorSprite.source = moveUpSprite; return;}
+        if(actualSideY == 1) {actorSprite.source = moveDownSprite; return;}
     }
     function ch_collisionX()
     {
@@ -277,6 +281,7 @@ Item {
                 AnimatedImage
                 {
                     id: actorSprite
+                    //for idle sprite
                     source: "qrc:/ani/GameAssets/animations/movef.gif"
 
                     Layout.minimumHeight: 100*actorArea.height/standartScaleY

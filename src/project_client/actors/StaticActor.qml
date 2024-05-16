@@ -16,13 +16,16 @@ Item {
     property int collisionX: (actualSize/2+actualXCord)*parent.width/standartScale
     property int collisionY: (actualSize/2+actualYCord)*parent.height/standartScaleY
 
+    property bool activeCollision: false
+
     signal newCollision(int x, int y)
 
     Component.onCompleted: {
+        if(!activeCollision){return}
         targetSystem.add_to_target(collisionX,collisionY,actor.width/2,cppId)
     }
-    onCollisionXChanged: {targetSystem.reRender_coords(collisionX,collisionY,actor.width/2,cppId)}
-    onCollisionYChanged: {targetSystem.reRender_coords(collisionX,collisionY,actor.width/2,cppId)}
+    onCollisionXChanged: {if(!activeCollision){return};targetSystem.reRender_coords(collisionX,collisionY,actor.width/2,cppId)}
+    onCollisionYChanged: {if(!activeCollision){return};targetSystem.reRender_coords(collisionX,collisionY,actor.width/2,cppId)}
 
     anchors.fill: parent
     RowLayout
@@ -45,10 +48,7 @@ Item {
             Layout.topMargin: actualYCord*stArea.height/standartScaleY
             Layout.leftMargin: actualXCord*stArea.width/standartScale
 
-            Text {
-                color: "white"
-                text: "X:" + collisionX + " Y:" + collisionY
-            }
+
         }
     }
 }
