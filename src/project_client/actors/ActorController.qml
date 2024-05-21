@@ -99,6 +99,7 @@ Item {
             leftMove = false
             return;
         }
+        disabledCollisionBlock()
     }
     function ch_collisionY()
     {
@@ -150,6 +151,7 @@ Item {
             downMove = false
             return;
         }
+        disabledCollisionBlock()
     }
     onScaledXChanged: {
         ch_collisionX();
@@ -172,22 +174,22 @@ Item {
         if (event.isAutoRepeat){return}
         if(event.key === Qt.Key_D){
             if(!collisionRight || !targetSystem.is_collision()){
-                rightMove = true;  anis = false; disabledCollisionBlock(); actualSideX = 2;return;
+                rightMove = true;  anis = false; actualSideX = 2;return;
             }
         }
         if(event.key === Qt.Key_A){
             if(!collisionLeft || !targetSystem.is_collision()){
-                leftMove = true;   anis = false; disabledCollisionBlock(); actualSideX = 3; return;
+                leftMove = true;   anis = false; actualSideX = 3; return;
             }
         }
         if(event.key === Qt.Key_W){
             if(!collisionUp || !targetSystem.is_collision()){
-                upMove = true;   anis = false; disabledCollisionBlock(); actualSideY = 0; return;
+                upMove = true;   anis = false; actualSideY = 0; return;
             }
         }
         if(event.key === Qt.Key_S){
             if(!collisionDown || !targetSystem.is_collision()){
-                downMove = true;   anis = false; disabledCollisionBlock();actualSideY = 1; return;
+                downMove = true;   anis = false; actualSideY = 1; return;
             }
         }
     }

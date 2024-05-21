@@ -43,7 +43,7 @@ Item {
         CollisionRad
         {
             cppId: 0
-            activeCollision:  false
+            activeCollision:  true
         }
     }
 
