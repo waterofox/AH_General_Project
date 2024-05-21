@@ -5,29 +5,18 @@ Item {
 
     property double standartScale: 600.0
     property double standartScaleY: 360.0
-
-    property int cppId: 0
     property int actualXCord: 0
     property int actualYCord: 0
     property int actualSize: 10
     property string actualColor: "black"
     property string actualTextur: "None"
 
-    property int collisionX: (actualSize/2+actualXCord)*parent.width/standartScale
-    property int collisionY: (actualSize/2+actualYCord)*parent.height/standartScaleY
-
-    property bool activeCollision: false
-
-    signal newCollision(int x, int y)
-
-    Component.onCompleted: {
-        if(!activeCollision){return}
-        targetSystem.add_to_target(collisionX,collisionY,actor.width/2,cppId)
-    }
-    onCollisionXChanged: {if(!activeCollision){return};targetSystem.reRender_coords(collisionX,collisionY,actor.width/2,cppId)}
-    onCollisionYChanged: {if(!activeCollision){return};targetSystem.reRender_coords(collisionX,collisionY,actor.width/2,cppId)}
-
     anchors.fill: parent
+
+    property int scaledX: actualXCord*stArea.width/standartScale
+    property int scaledY: actualYCord*stArea.height/standartScaleY
+    property int scaledWidth: actualSize*stArea.width /standartScale
+    property int scaledHeight: actualSize*stArea.height/standartScaleY
     RowLayout
     {
         id: stArea
@@ -38,15 +27,15 @@ Item {
             id: actor
             color:  actualColor
 
-            Layout.maximumHeight: actualSize*stArea.height/standartScaleY
-            Layout.maximumWidth:  actualSize*stArea.width /standartScale
+            Layout.maximumHeight: scaledHeight
+            Layout.maximumWidth:  scaledWidth
 
             Layout.fillHeight: true
             Layout.fillWidth: true
 
             Layout.alignment: Qt.AlignTop
-            Layout.topMargin: actualYCord*stArea.height/standartScaleY
-            Layout.leftMargin: actualXCord*stArea.width/standartScale
+            Layout.topMargin: scaledY
+            Layout.leftMargin: scaledX
 
 
         }

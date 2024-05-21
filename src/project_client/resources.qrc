@@ -6,10 +6,12 @@
         <file>actors/ActorController.qml</file>
         <file>actors/StaticActor.qml</file>
         <file>pages/GameScene.qml</file>
+        <file>tools/CollisionRad.qml</file>
     </qresource>
     <qresource prefix="/res"/>
     <qresource prefix="/ani">
         <file>GameAssets/animations/movef.gif</file>
         <file>GameAssets/animations/moveb.gif</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

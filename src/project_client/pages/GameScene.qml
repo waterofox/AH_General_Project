@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Layouts
 import CTS 1.0
 import "../actors"
-
+import "../tools"
 
 Item {
     visible: true
@@ -39,32 +39,15 @@ Item {
         actualSize: 55
         actualXCord: 200
         actualYCord: 200
-        cppId: 0
         actualColor: "yellow"
-        activeCollision:  false
+        CollisionRad
+        {
+            cppId: 0
+            activeCollision:  false
+        }
     }
 
-    StaticActor
-    {
-        id:actor2
-        actualSize: 50
-        actualXCord: 200
-        actualYCord: 50
-        cppId: 1
-        actualColor: "blue"
-        activeCollision: true
-    }
 
-    StaticActor
-    {
-        id:actor3
-        actualSize: 70
-        actualXCord: 250
-        actualYCord: 50
-        cppId: 2
-        actualColor: "blue"
-        activeCollision: true
-    }
     ActorController
     {
         id:player
