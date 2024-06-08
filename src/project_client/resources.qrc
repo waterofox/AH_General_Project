@@ -7,6 +7,7 @@
         <file>actors/StaticActor.qml</file>
         <file>pages/GameScene.qml</file>
         <file>tools/CollisionRad.qml</file>
+        <file>tools/GameLabel.qml</file>
     </qresource>
     <qresource prefix="/res"/>
     <qresource prefix="/ani">

@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQml
 import QtQuick.Layouts
 import "pages"
+import "tools"
 ApplicationWindow {
     visible: true
     width: 600
@@ -62,4 +63,8 @@ ApplicationWindow {
         }
     }
 
+    GameLabel
+    {
+
+    }
 }
