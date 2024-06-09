@@ -62,9 +62,4 @@ ApplicationWindow {
 
         }
     }
-
-    GameLabel
-    {
-
-    }
 }
