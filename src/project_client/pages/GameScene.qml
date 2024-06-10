@@ -5,6 +5,7 @@ import "../actors"
 import "../tools"
 
 Item {
+    id:sceneroot
     visible: true
     property int pWidth: 0
     property int pHeight: 0
@@ -33,30 +34,62 @@ Item {
     width: parent.width
     height: parent.height
 
-    StaticActor
+    Flickable
     {
-        id:actor1
-        actualSize: 55
-        actualXCord: 200
-        actualYCord: 200
-        actualColor: "yellow"
-        CollisionRad
+        anchors.fill: parent
+        contentWidth: sceneRoot.width
+        contentHeight: sceneRoot.height
+        contentX:5
+        contentY: 5
+        Rectangle
         {
-            cppId: 0
-            activeCollision:  true
+            id:sceneRoot
+            width: 1000*pWidth/standartScale
+            height: 1000*pHeight/standartScaleY
+            color: "transparent"
+            StaticActor
+            {
+                id:actor1
+                actualSize: 55
+                actualXCord: 200
+                actualYCord: 200
+                actualColor: "yellow"
+                forsH:sceneroot.pHeight
+                forsW: sceneroot.pWidth
+
+                CollisionRad
+                {
+                    cppId: 0
+                    activeCollision:  true
+                }
+
+            }
+
+
+            ActorController
+            {
+                id:player
+                actualW: 30
+                actualH: 50
+                actualX: 100
+                actualY: 100
+                actualSpeed: 1
+                moveDownSprite: "qrc:/ani/GameAssets/animations/movef.gif"
+                moveUpSprite: "qrc:/ani/GameAssets/animations/moveb.gif"
+                forsH:sceneroot.pHeight
+                forsW: sceneroot.pWidth
+            }
+            Rectangle
+            {
+                color:"transparent"
+                border
+                {
+                    color:"green"
+                    width:4
+                }
+                anchors.fill: player
+            }
         }
-    }
 
-
-    ActorController
-    {
-        id:player
-        actualW: 30
-        actualH: 50
-        actualX: 100
-        actualY: 100
-        actualSpeed: 1
-        moveDownSprite: "qrc:/ani/GameAssets/animations/movef.gif"
-        moveUpSprite: "qrc:/ani/GameAssets/animations/moveb.gif"
     }
 }

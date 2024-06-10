@@ -4,24 +4,27 @@ import QtQuick.Controls
 //import CPP 1.0
 Item {
     id: actorRoot
-    width: parent.width
-    height: parent.height
+    width: 1000*forsW/standartScale
+    height: 1000*forsH/standartScaleY
+
+    property int forsW: 0
+    property int forsH: 0
 
     property int standartScale:  600
     property int standartScaleY: 360
 
     property int actualX: 0
     property int actualY: 0
-    property int scaledX: actualX*actorRoot.width/  standartScale
-    property int scaledY: actualY*actorRoot.height/standartScaleY
+    property int scaledX: actualX*actorRoot.forsW/  standartScale
+    property int scaledY: actualY*actorRoot.forsH/standartScaleY
 
     property int actualW: 0
     property int actualH: 0
-    property int scaledW: actualW*actorRoot.width/  standartScale
-    property int scaledH: actualH*actorRoot.height/standartScaleY
+    property int scaledW: actualW*actorRoot.forsW/  standartScale
+    property int scaledH: actualH*actorRoot.forsH/standartScaleY
 
     property int actualSpeed: 0
-    property int scaledSpeed: actualSpeed*actorRoot.width/standartScale
+    property int scaledSpeed: actualSpeed*actorRoot.forsW/standartScale
 
     property bool nstart: false
 
@@ -273,7 +276,7 @@ Item {
     RowLayout
     {
         id:actorArea
-        anchors.fill: parent
+     anchors.fill: parent
         Rectangle
         {
             id:actor
@@ -294,14 +297,14 @@ Item {
                     //for idle sprite
                     source: "qrc:/ani/GameAssets/animations/movef.gif"
 
-                    Layout.minimumHeight: 100*actorArea.height/standartScaleY
-                    Layout.minimumWidth: 100*actorArea.width/standartScale
+                    Layout.minimumHeight: 100*actorRoot.forsH/standartScaleY
+                    Layout.minimumWidth: 100*actorRoot.forsW/standartScale
 
-                    Layout.maximumHeight: 100*actorArea.height/standartScaleY
-                    Layout.maximumWidth: 100*actorArea.width/standartScale
+                    Layout.maximumHeight: 100*actorRoot.forsH/standartScaleY
+                    Layout.maximumWidth: 100*actorRoot.forsW/standartScale
                     Layout.alignment: Qt.AlignTop
 
-                    Layout.topMargin: -50*actorArea.height/standartScaleY
+                    Layout.topMargin: -50*actorRoot.forsH/standartScaleY
                     paused: anis
                     onPausedChanged: actorSprite.currentFrame = 2
                 }

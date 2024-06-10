@@ -3,6 +3,12 @@ import QtQuick.Layouts
 import QtQuick.Controls
 Item {
 
+    width: 1000*forsW/standartScale
+    height: 1000*forsH/standartScaleY
+
+    property int forsW: 0
+    property int forsH: 0
+
     property double standartScale: 600.0
     property double standartScaleY: 360.0
     property int actualXCord: 0
@@ -11,12 +17,10 @@ Item {
     property string actualColor: "black"
     property string actualTextur: "None"
 
-    anchors.fill: parent
-
-    property int scaledX: actualXCord*stArea.width/standartScale
-    property int scaledY: actualYCord*stArea.height/standartScaleY
-    property int scaledWidth: actualSize*stArea.width /standartScale
-    property int scaledHeight: actualSize*stArea.height/standartScaleY
+    property int scaledX: actualXCord*forsW/standartScale
+    property int scaledY: actualYCord*forsH/standartScaleY
+    property int scaledWidth: actualSize*forsW /standartScale
+    property int scaledHeight: actualSize*forsH/standartScaleY
     RowLayout
     {
         id: stArea
