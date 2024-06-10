@@ -8,6 +8,7 @@
         <file>pages/GameScene.qml</file>
         <file>tools/CollisionRad.qml</file>
         <file>tools/GameLabel.qml</file>
+        <file>tools/HPbar.qml</file>
     </qresource>
     <qresource prefix="/res"/>
     <qresource prefix="/ani">

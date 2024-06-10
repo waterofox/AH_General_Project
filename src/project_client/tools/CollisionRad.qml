@@ -15,7 +15,7 @@ Item {
         if(!activeCollision){return}
         targetSystem.add_to_target(collisionX,collisionY,parent.scaledWidth/2,cppId)
     }
-    onCollisionXChanged: {if(!activeCollision){return};targetSystem.reRender_coords(collisionX,collisionY,parent.scaledWidth/2,cppId); console.log(collisionX,collisionY)}
-    onCollisionYChanged: {if(!activeCollision){return};targetSystem.reRender_coords(collisionX,collisionY,parent.scaledWidth/2,cppId); console.log(collisionX,collisionY)}
+    onCollisionXChanged: {if(!activeCollision){return};targetSystem.reRender_coords(collisionX,collisionY,parent.scaledWidth/2,cppId)}
+    onCollisionYChanged: {if(!activeCollision){return};targetSystem.reRender_coords(collisionX,collisionY,parent.scaledWidth/2,cppId)}
 
 }

@@ -30,7 +30,6 @@ Item {
     {
         id:targetSystem
     }
-
     width: parent.width
     height: parent.height
 
@@ -47,6 +46,8 @@ Item {
             width: 1000*pWidth/standartScale
             height: 1000*pHeight/standartScaleY
             color: "transparent"
+
+            //place for our actors on game scene
             StaticActor
             {
                 id:actor1
@@ -91,5 +92,9 @@ Item {
             }
         }
 
+    }
+    HPbar
+    {
+        actualHP: player.actualHP
     }
 }
