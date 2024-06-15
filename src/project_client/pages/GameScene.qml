@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts
 import CTS 1.0
+import SSS 1.0
 import "../actors"
 import "../tools"
 
@@ -30,6 +31,10 @@ Item {
     {
         id:targetSystem
     }
+    SwitchSectorSystem
+    {
+        id:switchSystem
+    }
     width: parent.width
     height: parent.height
 
@@ -43,8 +48,8 @@ Item {
         Rectangle
         {
             id:sceneRoot
-            width: 1000*pWidth/standartScale
-            height: 1000*pHeight/standartScaleY
+            width: 1800*pWidth/standartScale
+            height: 1080*pHeight/standartScaleY
             color: "transparent"
 
             //place for our actors on game scene
@@ -88,7 +93,7 @@ Item {
                     color:"green"
                     width:4
                 }
-                anchors.fill: player
+                anchors.fill: sceneRoot
             }
         }
 
