@@ -50,6 +50,8 @@ Item {
 
     property int actualHP: 5
 
+    property int xch: actor.x
+    property int ych: actor.y
     function setHP(newArg)
     {
         actualHP = newArg

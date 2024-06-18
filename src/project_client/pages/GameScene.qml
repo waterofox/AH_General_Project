@@ -66,7 +66,6 @@ Item {
 
             }
 
-
             ActorController
             {
                 id:player
@@ -79,7 +78,11 @@ Item {
                 moveUpSprite: "qrc:/ani/GameAssets/animations/moveb.gif"
                 forsH:sceneroot.pHeight
                 forsW: sceneroot.pWidth
+
+                onActualYChanged: {console.log(player.ych)}
+
             }
+
             Rectangle
             {
                 color:"transparent"
