@@ -3,6 +3,7 @@
 //#include "actors/models/actormodel.h"
 //#include "threads/gameloopthread.h"
 #include "tools/collisiontargetsystem.h"
+#include "tools/switchsectorsystem.h"
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -12,6 +13,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<CollisionTargetSystem>("CTS",1,0,"CollisionTargetSystem");
+    qmlRegisterType<SwitchSectorSystem>("SSS",1,0,"SwitchSectorSystem");
 
     QQmlApplicationEngine engine;
 

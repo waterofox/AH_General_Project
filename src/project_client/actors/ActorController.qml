@@ -4,8 +4,8 @@ import QtQuick.Controls
 //import CPP 1.0
 Item {
     id: actorRoot
-    width: 1000*forsW/standartScale
-    height: 1000*forsH/standartScaleY
+    width: parent.width
+    height: parent.height
 
     property int forsW: 0
     property int forsH: 0
@@ -168,9 +168,13 @@ Item {
     }
     onScaledXChanged: {
         ch_collisionX();
+        switchSystem.update_player_cords(scaledX,scaledY)
+        switchSystem.check_level()
     }
     onScaledYChanged: {
         ch_collisionY();
+        switchSystem.update_player_cords(scaledX,scaledY)
+        switchSystem.check_level()
     }
     Component.onCompleted: {
         disabledCollisionBlock()

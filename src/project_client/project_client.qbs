@@ -32,6 +32,8 @@ QtApplication {
         "main.qml",
         "tools/collisiontargetsystem.cpp",
         "tools/collisiontargetsystem.h",
+        "tools/switchsectorsystem.cpp",
+        "tools/switchsectorsystem.h",
     ]
 
 
