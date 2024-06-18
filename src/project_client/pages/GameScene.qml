@@ -76,9 +76,8 @@ Item {
         contentY: actualconY*camera.height/standartScaleY
 
         clip: true
-        //interactive: false
+        interactive: false
 
-        onContentYChanged: {console.log(contentY,actualconY,height)}
         onWidthChanged: {
 
             if(!st){return}
