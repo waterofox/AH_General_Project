@@ -140,29 +140,33 @@ Item {
             //place for our actors on game scene
             StaticActor
             {
-                id:actor1
                 actualSize: 55
-                actualXCord: 200
+                actualXCord: 250
                 actualYCord: 200
-                actualColor: "yellow"
+                actualColor: "transparent"
                 forsH:sceneroot.pHeight
                 forsW: sceneroot.pWidth
-
-                CollisionRad
-                {
-                    cppId: 0
-                    activeCollision:  true
-                }
-
+                spriteSource: "qrc:/res/GameAssets/statickAssets/tree.png"
+                spriteSize: 200
             }
-
+            StaticActor
+            {
+                actualSize: 55
+                actualXCord: 400
+                actualYCord: 205
+                actualColor: "transparent"
+                forsH:sceneroot.pHeight
+                forsW: sceneroot.pWidth
+                spriteSource: "qrc:/res/GameAssets/statickAssets/tree.png"
+                spriteSize: 220
+            }
             ActorController
             {
                 id:player
                 actualW: 30
                 actualH: 50
-                actualX: 100
-                actualY: 100
+                actualX: 150
+                actualY: 220
                 actualSpeed: 1
                 moveDownSprite: "qrc:/ani/GameAssets/animations/movef.gif"
                 moveUpSprite: "qrc:/ani/GameAssets/animations/moveb.gif"
@@ -172,6 +176,95 @@ Item {
                 onActualYChanged: {console.log(player.ych)}
 
             }
+            StaticActor
+            {
+                actualSize: 55
+                actualXCord: 25
+                actualYCord: 25
+                actualColor: "transparent"
+                forsH:sceneroot.pHeight
+                forsW: sceneroot.pWidth
+                spriteSource: "qrc:/res/GameAssets/statickAssets/doubletree.png"
+                spriteSize: 200
+            }
+            StaticActor
+            {
+                actualSize: 55
+                actualXCord: 120
+                actualYCord: 40
+                actualColor: "transparent"
+                forsH:sceneroot.pHeight
+                forsW: sceneroot.pWidth
+                spriteSource: "qrc:/res/GameAssets/statickAssets/doubletree.png"
+                spriteSize: 200
+            }
+            StaticActor
+            {
+                actualSize: 55
+                actualXCord: 200
+                actualYCord: 40
+                actualColor: "transparent"
+                forsH:sceneroot.pHeight
+                forsW: sceneroot.pWidth
+                spriteSource: "qrc:/res/GameAssets/statickAssets/xmastreeSAD.png"
+                spriteSize: 220
+            }
+            StaticActor
+            {
+                actualSize: 55
+                actualXCord: 200
+                actualYCord: 200
+                actualColor: "transparent"
+                forsH:sceneroot.pHeight
+                forsW: sceneroot.pWidth
+                spriteSource: "qrc:/res/GameAssets/statickAssets/holetree.png"
+                spriteSize: 250
+            }
+            StaticActor
+            {
+                actualSize: 55
+                actualXCord: 70
+                actualYCord: 190
+                actualColor: "transparent"
+                forsH:sceneroot.pHeight
+                forsW: sceneroot.pWidth
+                spriteSource: "qrc:/res/GameAssets/statickAssets/tree.png"
+                spriteSize: 250
+            }
+            StaticActor
+            {
+                actualSize: 55
+                actualXCord: 25
+                actualYCord: 250
+                actualColor: "transparent"
+                forsH:sceneroot.pHeight
+                forsW: sceneroot.pWidth
+                spriteSource: "qrc:/res/GameAssets/statickAssets/doubletree.png"
+                spriteSize: 200
+            }
+            StaticActor
+            {
+                actualSize: 55
+                actualXCord: 25
+                actualYCord: 250
+                actualColor: "transparent"
+                forsH:sceneroot.pHeight
+                forsW: sceneroot.pWidth
+                spriteSource: "qrc:/res/GameAssets/statickAssets/xmastreeSAD.png"
+                spriteSize: 220
+            }
+            StaticActor
+            {
+                actualSize: 55
+                actualXCord: 30
+                actualYCord: 350
+                actualColor: "transparent"
+                forsH:sceneroot.pHeight
+                forsW: sceneroot.pWidth
+                spriteSource: "qrc:/res/GameAssets/statickAssets/tree.png"
+                spriteSize: 250
+            }
+
 
             Rectangle
             {

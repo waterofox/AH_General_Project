@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Layouts
 import QtQuick.Controls
 Item {
-
+    id:actorRoot
     width: 1000*forsW/standartScale
     height: 1000*forsH/standartScaleY
 
@@ -21,6 +21,9 @@ Item {
     property int scaledY: actualYCord*forsH/standartScaleY
     property int scaledWidth: actualSize*forsW /standartScale
     property int scaledHeight: actualSize*forsH/standartScaleY
+
+    property string spriteSource: "None"
+    property int spriteSize: 0
     RowLayout
     {
         id: stArea
@@ -41,7 +44,25 @@ Item {
             Layout.topMargin: scaledY
             Layout.leftMargin: scaledX
 
+            RowLayout
+            {
+                id: actorSpriteRoot
+                anchors.centerIn: parent
 
+                Image {
+                    id: spite
+                    source: spriteSource
+                    Layout.minimumHeight: spriteSize*actorRoot.forsH/standartScaleY
+                    Layout.minimumWidth: spriteSize*actorRoot.forsW/standartScale
+
+                    Layout.maximumHeight: spriteSize*actorRoot.forsH/standartScaleY
+                    Layout.maximumWidth: spriteSize*actorRoot.forsW/standartScale
+                    Layout.alignment: Qt.AlignTop
+
+
+                    Layout.topMargin: (spriteSize/2)*(-1)*actorRoot.forsH/standartScaleY
+                }
+            }
         }
     }
 }

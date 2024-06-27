@@ -11,7 +11,7 @@ ApplicationWindow {
     property double standartScale: 600.0
     property double standartScaleY: 360.0
     function setCurrentIndex(index) {rootHotel.currentIndex = index}
-    visibility: "FullScreen"
+    //visibility: "FullScreen"
     SwipeView
     {
         id: rootHotel
