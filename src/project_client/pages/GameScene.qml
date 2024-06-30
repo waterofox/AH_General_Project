@@ -28,7 +28,7 @@ Item {
     Rectangle
     {
         anchors.fill: parent
-        color: "gray"
+        color: "#2E8B57"
     }
 
     Component.onCompleted: {}

@@ -9,6 +9,7 @@
         <file>tools/CollisionRad.qml</file>
         <file>tools/GameLabel.qml</file>
         <file>tools/HPbar.qml</file>
+        <file>tools/QuestArea.qml</file>
     </qresource>
     <qresource prefix="/res">
         <file>GameAssets/statickAssets/doubletree.png</file>
