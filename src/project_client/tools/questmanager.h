@@ -28,6 +28,8 @@ class QuestManager : public QObject
         int area_width;
     };
 private:
+    int active_quest_id = -1;
+    int pre_text = -1;
     QMap<int,quest_area> quests_list;
 public:
     QuestManager();
@@ -37,6 +39,12 @@ public:
     void test();
 public slots:
     Q_INVOKABLE void change_quest(const int& quest_id, const int& change_mode);
+    Q_INVOKABLE void is_some_quest(const int& X, const int&Y);
+    Q_INVOKABLE void show_next_text();
+signals:
+    Q_INVOKABLE void show_quest(const QString& text);
+    Q_INVOKABLE void end_quest();
+
 
 };
 

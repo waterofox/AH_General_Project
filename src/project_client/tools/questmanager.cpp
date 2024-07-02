@@ -66,3 +66,30 @@ void QuestManager::change_quest(const int &quest_id, const int &change_mode)
         break;
     }
 }
+
+void QuestManager::is_some_quest(const int &X, const int &Y)
+{
+    for(auto quest = this->quests_list.begin(); quest != this->quests_list.end();++quest)
+    {
+        if(X > quest->area_cords.X and Y > quest->area_cords.Y)
+        {
+            if( X < quest->area_cords.X+quest->area_width and Y < quest->area_cords.Y + quest->area_height)
+            {
+                if(!quest->is_active){return;}
+                this->active_quest_id = quest.key();
+                emit this->show_quest(quest->quest_mes.first());
+                this->pre_text = 0;
+                return;
+            }
+        }
+    }
+    return;
+}
+
+void QuestManager::show_next_text()
+{
+    auto quest = this->quests_list.find(this->active_quest_id);
+    if(!quest->quest_mes.contains(this->pre_text+1)){emit this->end_quest();this->pre_text = -1; return;}
+    this->pre_text = this->pre_text + 1;
+    emit this->show_quest(quest->quest_mes.value(this->pre_text));
+}
