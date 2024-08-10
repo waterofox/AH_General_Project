@@ -17,10 +17,14 @@
         <file>GameAssets/statickAssets/tree.png</file>
         <file>GameAssets/statickAssets/xmastree.png</file>
         <file>GameAssets/statickAssets/xmastreeSAD.png</file>
+        <file>GameAssets/statickAssets/ah.png</file>
     </qresource>
     <qresource prefix="/ani">
         <file>GameAssets/animations/movef.gif</file>
         <file>GameAssets/animations/moveb.gif</file>
+        <file>GameAssets/animations/ahdialog.gif</file>
     </qresource>
-    <qresource prefix="/"/>
+    <qresource prefix="/fon">
+        <file>GameAssets/fonts/EpilepsySans.ttf</file>
+    </qresource>
 </RCC>

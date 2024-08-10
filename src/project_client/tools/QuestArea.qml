@@ -14,6 +14,14 @@ Item {
     property int aY: 0
 
     property string aColor: "transparent"
+
+    property string actualColor: "white"
+
+    property string aSpriteSource: "None"
+    property int aSpriteSize: 0
+
+    //todo нужно добавить в хранилище квестов путь для иконки диалога
+
     StaticActor
     {
         id:area
@@ -23,6 +31,8 @@ Item {
         actualColor: aColor
         forsH:sceneroot.pHeight
         forsW: sceneroot.pWidth
+        spriteSize: aSpriteSize
+        spriteSource: aSpriteSource
     }
 
     function eventFilter(event)

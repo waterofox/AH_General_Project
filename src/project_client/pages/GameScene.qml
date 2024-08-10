@@ -146,6 +146,19 @@ Item {
 
 
             //place for our actors on game scene
+            QuestArea
+            {
+               id:jopa
+                aX: 30
+                aY: 100
+                aSize: 100
+                text: "JOPA/BOBRA/AHAHAH/"
+                pred: -1
+                int_id: 0
+                aColor: "#7dc4fa"
+                aSpriteSize: 100
+                aSpriteSource: "qrc:/res/GameAssets/statickAssets/ah.png"
+            }
             ActorController
             {
                 id:player
@@ -160,30 +173,6 @@ Item {
                 forsW: sceneroot.pWidth
 
             }
-            QuestArea
-            {
-                id:jopa
-                aX: 0
-                aY: 0
-                aSize: 100
-                text: "JOPA/BOBRA/AHAHAH/"
-                pred: -1
-                int_id: 0
-                aColor: "red"
-            }
-
-            QuestArea
-            {
-                id:jopa2
-                aX: 200
-                aY: 200
-                aSize: 50
-                text: "JOPA/NE BOBRA(((/((((((/"
-                pred: -1
-                int_id: 1
-                aColor: "blue"
-            }
-
             Rectangle
             {
                 color:"transparent"
@@ -192,7 +181,7 @@ Item {
                     color:"red"
                     width:4
                 }
-                anchors.fill: jopa
+                anchors.fill: sceneRoot
             }
         }
 

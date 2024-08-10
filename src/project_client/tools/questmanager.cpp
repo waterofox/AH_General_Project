@@ -18,7 +18,6 @@ void QuestManager::reg_new_quest(const int& id, const QString& mes, const bool& 
 
 void QuestManager::rewrite_quests_position(const int &X, const int &Y, const int &height, const int &width, const int &id)
 {
-    qDebug() <<"NEW!";
     auto quest = this->quests_list.find(id);
     quest->area_cords.X = X;
     quest->area_cords.Y = Y;

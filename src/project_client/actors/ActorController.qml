@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts
 import QtQuick.Controls
+import "../tools"
 //import CPP 1.0
 Item {
     id: actorRoot
@@ -283,6 +284,7 @@ Item {
     {
         id:actorArea
      anchors.fill: parent
+
         Rectangle
         {
             id:actor
@@ -292,10 +294,19 @@ Item {
             Layout.maximumWidth: scaledW
             Layout.maximumHeight: scaledH
 
+            GameLabel
+            {
+                width: 200*actorRoot.forsW/standartScale
+                height: 60*actorRoot.forsH/standartScaleY
+                x:50*actorRoot.forsW/standartScale
+                y:-50*actorRoot.forsH/standartScaleY
+            }
             RowLayout
             {
                 id: actorSpriteRoot
                 anchors.centerIn: parent
+
+
 
                 AnimatedImage
                 {
@@ -315,6 +326,7 @@ Item {
                     onPausedChanged: actorSprite.currentFrame = 2
                 }
             }
+
             Layout.alignment: Qt.AlignTop
             Layout.leftMargin: scaledX
             Layout.topMargin: scaledY

@@ -14,8 +14,7 @@ Item {
     property int actualXCord: 0
     property int actualYCord: 0
     property int actualSize: 10
-    property string actualColor: "black"
-    property string actualTextur: "None"
+    property string actualColor: "white"
 
     property int scaledX: actualXCord*forsW/standartScale
     property int scaledY: actualYCord*forsH/standartScaleY
