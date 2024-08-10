@@ -11,7 +11,7 @@ void SwitchSectorSystem::check_level()
         if(rez > this->base_h_level){emit this->goRight();}
         else{emit this->goLeft();}
         this->base_h_level = rez;
-        qDebug() << "actual level is: " << this->base_h_level << ' ' << this->base_v_level;
+        //qDebug() << "actual level is: " << this->base_h_level << ' ' << this->base_v_level;
     }
 
     rez = this->cords.Y/this->levelS.height;
@@ -20,6 +20,6 @@ void SwitchSectorSystem::check_level()
         if(rez > this->base_v_level){emit this->goDown();}
         else{emit this->goUp();}
         this->base_v_level = rez;
-        qDebug() << "actual level is: " << this->base_h_level << ' ' << this->base_v_level;
+        //qDebug() << "actual level is: " << this->base_h_level << ' ' << this->base_v_level;
     }
 }

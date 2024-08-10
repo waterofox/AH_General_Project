@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<CollisionTargetSystem>("CTS",1,0,"CollisionTargetSystem");
     qmlRegisterType<SwitchSectorSystem>("SSS",1,0,"SwitchSectorSystem");
+    qmlRegisterType<QuestManager>("QuestM",1,0,"QuestManger");
 
     QQmlApplicationEngine engine;
 

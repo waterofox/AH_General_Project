@@ -13,16 +13,18 @@ void QuestManager::reg_new_quest(const int& id, const QString& mes, const bool& 
     new_quest.the_point_before_id = b_id;
     new_quest.quest_mes = buildQuest(mes);
 
-    this->quests_list.insert(id,new_quest);
+    this->quests_list.insert(id,new_quest);    
 }
 
 void QuestManager::rewrite_quests_position(const int &X, const int &Y, const int &height, const int &width, const int &id)
 {
+    qDebug() <<"NEW!";
     auto quest = this->quests_list.find(id);
     quest->area_cords.X = X;
     quest->area_cords.Y = Y;
     quest->area_height = height;
     quest->area_width = width;
+
 }
 
 QMap<int, QString> QuestManager::buildQuest(const QString &str)
@@ -67,23 +69,24 @@ void QuestManager::change_quest(const int &quest_id, const int &change_mode)
     }
 }
 
-void QuestManager::is_some_quest(const int &X, const int &Y)
+bool QuestManager::is_some_quest(const int &X, const int &Y)
 {
-    for(auto quest = this->quests_list.begin(); quest != this->quests_list.end();++quest)
+    for(int i = 0; i < this->quests_list.size(); ++i)
     {
-        if(X > quest->area_cords.X and Y > quest->area_cords.Y)
+        quest_area quest = this->quests_list[i];
+        if(X > quest.area_cords.X and Y > quest.area_cords.Y)
         {
-            if( X < quest->area_cords.X+quest->area_width and Y < quest->area_cords.Y + quest->area_height)
+            if( X < quest.area_cords.X+quest.area_width and Y < quest.area_cords.Y + quest.area_height)
             {
-                if(!quest->is_active){return;}
-                this->active_quest_id = quest.key();
-                emit this->show_quest(quest->quest_mes.first());
+                if(!quest.is_active){return false;}
+                this->active_quest_id = quest.quest_id;
+                emit this->show_quest(quest.quest_mes.first());
                 this->pre_text = 0;
-                return;
+                return true;
             }
         }
     }
-    return;
+    return false;
 }
 
 void QuestManager::show_next_text()

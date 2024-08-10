@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Layouts
 import CTS 1.0
 import SSS 1.0
+import QuestM 1.0
 import "../actors"
 import "../tools"
 
@@ -16,6 +17,8 @@ Item {
     function eventPressedFilter(event)
     {
         player.set(event);
+        jopa.eventFilter(event)
+
     }
     function eventReleasedFilter(event)
     {
@@ -28,7 +31,8 @@ Item {
     Rectangle
     {
         anchors.fill: parent
-        color: "#2E8B57"
+        //color: "#2E8B57"
+        color: '#696969'
     }
 
     Component.onCompleted: {}
@@ -40,6 +44,10 @@ Item {
     {
         id:switchSystem
         Component.onCompleted: {st = true;switchSystem.update_level_size(camera.height,camera.width)}
+    }
+    QuestManger
+    {
+        id:questManager
     }
     Connections
     {
@@ -138,28 +146,6 @@ Item {
 
 
             //place for our actors on game scene
-            StaticActor
-            {
-                actualSize: 55
-                actualXCord: 250
-                actualYCord: 200
-                actualColor: "transparent"
-                forsH:sceneroot.pHeight
-                forsW: sceneroot.pWidth
-                spriteSource: "qrc:/res/GameAssets/statickAssets/tree.png"
-                spriteSize: 200
-            }
-            StaticActor
-            {
-                actualSize: 55
-                actualXCord: 400
-                actualYCord: 205
-                actualColor: "transparent"
-                forsH:sceneroot.pHeight
-                forsW: sceneroot.pWidth
-                spriteSource: "qrc:/res/GameAssets/statickAssets/tree.png"
-                spriteSize: 220
-            }
             ActorController
             {
                 id:player
@@ -173,114 +159,42 @@ Item {
                 forsH:sceneroot.pHeight
                 forsW: sceneroot.pWidth
 
-                onActualYChanged: {console.log(player.ych)}
-
             }
-            StaticActor
+            QuestArea
             {
-                actualSize: 55
-                actualXCord: 25
-                actualYCord: 25
-                actualColor: "transparent"
-                forsH:sceneroot.pHeight
-                forsW: sceneroot.pWidth
-                spriteSource: "qrc:/res/GameAssets/statickAssets/doubletree.png"
-                spriteSize: 200
-            }
-            StaticActor
-            {
-                actualSize: 55
-                actualXCord: 120
-                actualYCord: 40
-                actualColor: "transparent"
-                forsH:sceneroot.pHeight
-                forsW: sceneroot.pWidth
-                spriteSource: "qrc:/res/GameAssets/statickAssets/doubletree.png"
-                spriteSize: 200
-            }
-            StaticActor
-            {
-                actualSize: 55
-                actualXCord: 200
-                actualYCord: 40
-                actualColor: "transparent"
-                forsH:sceneroot.pHeight
-                forsW: sceneroot.pWidth
-                spriteSource: "qrc:/res/GameAssets/statickAssets/xmastreeSAD.png"
-                spriteSize: 220
-            }
-            StaticActor
-            {
-                actualSize: 55
-                actualXCord: 200
-                actualYCord: 200
-                actualColor: "transparent"
-                forsH:sceneroot.pHeight
-                forsW: sceneroot.pWidth
-                spriteSource: "qrc:/res/GameAssets/statickAssets/holetree.png"
-                spriteSize: 250
-            }
-            StaticActor
-            {
-                actualSize: 55
-                actualXCord: 70
-                actualYCord: 190
-                actualColor: "transparent"
-                forsH:sceneroot.pHeight
-                forsW: sceneroot.pWidth
-                spriteSource: "qrc:/res/GameAssets/statickAssets/tree.png"
-                spriteSize: 250
-            }
-            StaticActor
-            {
-                actualSize: 55
-                actualXCord: 25
-                actualYCord: 250
-                actualColor: "transparent"
-                forsH:sceneroot.pHeight
-                forsW: sceneroot.pWidth
-                spriteSource: "qrc:/res/GameAssets/statickAssets/doubletree.png"
-                spriteSize: 200
-            }
-            StaticActor
-            {
-                actualSize: 55
-                actualXCord: 25
-                actualYCord: 250
-                actualColor: "transparent"
-                forsH:sceneroot.pHeight
-                forsW: sceneroot.pWidth
-                spriteSource: "qrc:/res/GameAssets/statickAssets/xmastreeSAD.png"
-                spriteSize: 220
-            }
-            StaticActor
-            {
-                actualSize: 55
-                actualXCord: 30
-                actualYCord: 350
-                actualColor: "transparent"
-                forsH:sceneroot.pHeight
-                forsW: sceneroot.pWidth
-                spriteSource: "qrc:/res/GameAssets/statickAssets/tree.png"
-                spriteSize: 250
+                id:jopa
+                aX: 0
+                aY: 0
+                aSize: 100
+                text: "JOPA/BOBRA/AHAHAH/"
+                pred: -1
+                int_id: 0
+                aColor: "red"
             }
 
+            QuestArea
+            {
+                id:jopa2
+                aX: 200
+                aY: 200
+                aSize: 50
+                text: "JOPA/NE BOBRA(((/((((((/"
+                pred: -1
+                int_id: 1
+                aColor: "blue"
+            }
 
             Rectangle
             {
                 color:"transparent"
                 border
                 {
-                    color:"green"
+                    color:"red"
                     width:4
                 }
-                anchors.fill: sceneRoot
+                anchors.fill: jopa
             }
         }
 
-    }
-    HPbar
-    {
-        actualHP: player.actualHP
     }
 }
