@@ -17,7 +17,7 @@ Item {
     function eventPressedFilter(event)
     {
         player.set(event);
-        jopa.eventFilter(event)
+        testQuest.eventFilter(event)
 
     }
     function eventReleasedFilter(event)
@@ -51,22 +51,22 @@ Item {
     }
     Connections
     {
+        target: questManager
+        onShowQuest: {
+            player.set_mess(text)
+            player.visDialogWindiw = true
+        }
+        onEndQuest:{
+            player.visDialogWindiw = false
+            player.set_mess("")
+        }
+    }
+    Connections
+    {
         target: switchSystem
         onGoDown: nextDownLevel()
-    }
-    Connections
-    {
-        target: switchSystem
         onGoUp: nextUpLevel()
-    }
-    Connections
-    {
-        target: switchSystem
         onGoRight: nextRightLevel()
-    }
-    Connections
-    {
-        target: switchSystem
         onGoLeft: nextLeftLevel()
     }
     width: parent.width
@@ -148,16 +148,30 @@ Item {
             //place for our actors on game scene
             QuestArea
             {
-               id:jopa
+               id:testQuest
                 aX: 30
                 aY: 100
                 aSize: 100
-                text: "JOPA/BOBRA/AHAHAH/"
+                text: "Добро пожаловать в AH GENERAL\nPROJECT!/Этот проект посвящён\nразработке видео игры!/Суть в том, что игра пишется \nбез помощи игрового движка./Автор очень нуждается в вашей \nподдержке!/Можно переводом на Сбер или\nТинькофф:\n +7тут мог быть мой номер/"
                 pred: -1
                 int_id: 0
                 aColor: "#7dc4fa"
                 aSpriteSize: 100
                 aSpriteSource: "qrc:/res/GameAssets/statickAssets/ah.png"
+            }
+
+            QuestArea
+            {
+               id:treeQuest
+                aX: 300
+                aY: 400
+                aSize: 200
+                text: "А это просто дерево :3/Оно демонстрирует работу\nквестов!/"
+                pred: -1
+                int_id: 1
+                aColor: "#7dc4fa"
+                aSpriteSize: 350
+                aSpriteSource: "qrc:/res/GameAssets/statickAssets/holetree.png"
             }
             ActorController
             {

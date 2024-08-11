@@ -6,7 +6,7 @@ Item {
     width: 100
     height:100
     property string sourceIcon: "qrc:/ani/GameAssets/animations/ahdialog.gif"
-    property string actualText: "but nobody cames... \nно никто не пришёл \nно никто не пришёл"
+    property string actualText: ""
     property bool pauseIcon:true
     function set_icon(arg){}
     Rectangle
@@ -83,7 +83,7 @@ Item {
                         NumberAnimation on index {
                             id:textAnimation
                             to: someText.sourceLenght
-                            duration: 1800
+                            duration: 1000
 
                             onStopped: pauseIcon = true
                         }

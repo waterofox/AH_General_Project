@@ -16,6 +16,14 @@ class QuestManager : public QObject
     {
         int X;
         int Y;
+        bool operator== (const cords&a) const
+        {
+            if ((a.X == this->X) && (a.Y == this->Y))
+            {
+                return true;
+            }
+            return false;
+        }
     };
     struct quest_area
     {
@@ -26,6 +34,22 @@ class QuestManager : public QObject
         cords area_cords;
         int area_height;
         int area_width;
+        bool operator== (const quest_area&a) const
+        {
+            if( (a.quest_id == this->quest_id)&&(a.the_point_before_id == this->the_point_before_id)&&(a.is_active == this->is_active))
+            {
+                if((a.quest_mes == this->quest_mes)&&(a.area_cords == this->area_cords))
+                {
+                    if((a.area_height == this->area_height)&&(a.area_width == this->area_width))
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
+            }
+            return false;
+        }
     };
 private:
     int active_quest_id = -1;
@@ -42,8 +66,8 @@ public slots:
     Q_INVOKABLE bool is_some_quest(const int& X, const int&Y);
     Q_INVOKABLE void show_next_text();
 signals:
-    Q_INVOKABLE void show_quest(const QString& text);
-    Q_INVOKABLE void end_quest();
+    Q_INVOKABLE void showQuest(const QString& text);
+    Q_INVOKABLE void endQuest();
 
 
 };

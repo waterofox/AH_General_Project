@@ -70,6 +70,11 @@ void QuestManager::change_quest(const int &quest_id, const int &change_mode)
 
 bool QuestManager::is_some_quest(const int &X, const int &Y)
 {
+    if(this->active_quest_id != -1)
+    {
+        show_next_text();
+        return true;
+    }
     for(int i = 0; i < this->quests_list.size(); ++i)
     {
         quest_area quest = this->quests_list[i];
@@ -79,7 +84,7 @@ bool QuestManager::is_some_quest(const int &X, const int &Y)
             {
                 if(!quest.is_active){return false;}
                 this->active_quest_id = quest.quest_id;
-                emit this->show_quest(quest.quest_mes.first());
+                emit this->showQuest(quest.quest_mes.first());
                 this->pre_text = 0;
                 return true;
             }
@@ -91,7 +96,14 @@ bool QuestManager::is_some_quest(const int &X, const int &Y)
 void QuestManager::show_next_text()
 {
     auto quest = this->quests_list.find(this->active_quest_id);
-    if(!quest->quest_mes.contains(this->pre_text+1)){emit this->end_quest();this->pre_text = -1; return;}
+    if(!quest->quest_mes.contains(this->pre_text+1))
+    {
+        emit this->endQuest();
+        this->pre_text = -1;
+        this->active_quest_id = -1;
+        qDebug() << "THE END OF QUEST";
+        return;
+    }
     this->pre_text = this->pre_text + 1;
-    emit this->show_quest(quest->quest_mes.value(this->pre_text));
+    emit this->showQuest(quest->quest_mes.value(this->pre_text));
 }

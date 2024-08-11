@@ -53,6 +53,8 @@ Item {
 
     property int xch: actor.x
     property int ych: actor.y
+
+    property bool visDialogWindiw: false
     function setHP(newArg)
     {
         actualHP = newArg
@@ -63,6 +65,13 @@ Item {
         if(actualSideY == 0) {actorSprite.source = moveUpSprite; return;}
         if(actualSideY == 1) {actorSprite.source = moveDownSprite; return;}
     }
+
+    function set_mess(arg)
+    {
+        console.log(arg)
+        dialogWindow.actualText = arg
+    }
+
     function ch_collisionX()
     {
         targetSystem.update_actor_cordX(scaledX+scaledW)
@@ -296,6 +305,8 @@ Item {
 
             GameLabel
             {
+                id:dialogWindow
+                visible: visDialogWindiw
                 width: 200*actorRoot.forsW/standartScale
                 height: 60*actorRoot.forsH/standartScaleY
                 x:50*actorRoot.forsW/standartScale
