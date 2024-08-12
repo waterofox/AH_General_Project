@@ -55,6 +55,7 @@ private:
     int active_quest_id = -1;
     int pre_text = -1;
     QMap<int,quest_area> quests_list;
+    QList<int> ended_quests;
 public:
     QuestManager();
     Q_INVOKABLE void reg_new_quest(const int& id, const QString&, const bool& active, const int& b_id); // передаётся строка из всех сообщений в квесте через '/'

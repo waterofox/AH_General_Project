@@ -68,7 +68,6 @@ Item {
 
     function set_mess(arg)
     {
-        console.log(arg)
         dialogWindow.actualText = arg
     }
 

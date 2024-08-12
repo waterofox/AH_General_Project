@@ -4,8 +4,16 @@ QuestManager::QuestManager() {}
 
 void QuestManager::reg_new_quest(const int& id, const QString& mes, const bool& active, const int& b_id)
 {
+    //qDebug() << "BUILD ";
     if(this->quests_list.contains(id))    {return;}
-    if(!this->quests_list.contains(b_id) &&  b_id != -1) {return;}
+    if(!this->quests_list.contains(b_id))
+    {
+        //qDebug() << "New quest";
+        if(b_id != -1)
+        {
+            return;
+        }
+    }
 
     quest_area new_quest;
     new_quest.quest_id = id;
@@ -13,7 +21,9 @@ void QuestManager::reg_new_quest(const int& id, const QString& mes, const bool& 
     new_quest.the_point_before_id = b_id;
     new_quest.quest_mes = buildQuest(mes);
 
-    this->quests_list.insert(id,new_quest);    
+    this->quests_list.insert(id,new_quest);
+
+    //qDebug() << "BUILD " << new_quest.the_point_before_id;
 }
 
 void QuestManager::rewrite_quests_position(const int &X, const int &Y, const int &height, const int &width, const int &id)
@@ -82,6 +92,15 @@ bool QuestManager::is_some_quest(const int &X, const int &Y)
         {
             if( X < quest.area_cords.X+quest.area_width and Y < quest.area_cords.Y + quest.area_height)
             {
+                //qDebug() << "pred quest is: " << quest.the_point_before_id;
+                if(quest.the_point_before_id != -1)
+                {
+                    //qDebug() << "ЗАВИСИМЫЙ КВЕСТ " << this->ended_quests << ' ' << quest.the_point_before_id;
+                    if(!this->ended_quests.contains(quest.the_point_before_id))
+                    {
+                        return false;
+                    }
+                }
                 if(!quest.is_active){return false;}
                 this->active_quest_id = quest.quest_id;
                 emit this->showQuest(quest.quest_mes.first());
@@ -100,8 +119,9 @@ void QuestManager::show_next_text()
     {
         emit this->endQuest();
         this->pre_text = -1;
+        this->ended_quests.append(this->active_quest_id);
         this->active_quest_id = -1;
-        qDebug() << "THE END OF QUEST";
+        //qDebug() << "THE END OF QUEST";
         return;
     }
     this->pre_text = this->pre_text + 1;

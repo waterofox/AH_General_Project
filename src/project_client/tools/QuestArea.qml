@@ -38,7 +38,7 @@ Item {
     function eventFilter(event)
     {
         if (event.isAutoRepeat){return}
-        if (event.key === Qt.Key_E){console.log(questManager.is_some_quest(player.actualX,player.actualY))}
+        if (event.key === Qt.Key_E){questManager.is_some_quest(player.actualX,player.actualY)}
     }
 
     Component.onCompleted:

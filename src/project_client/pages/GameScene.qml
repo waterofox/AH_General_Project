@@ -146,6 +146,27 @@ Item {
 
 
             //place for our actors on game scene
+            /*
+              Сюда следует размещать актёров и квесты для создания рабочей игровой сцены.
+
+              Каждый АКТЁР представляет из себя отдельный новый слой. Учитывайте это, когда будете продумывать порядок добавления их на игровую сцену
+
+              Каждый КВЕСТ создаётся в последовательности, которая тянется снизу ввурх. (Т.е вверх по коду).
+            */
+
+            QuestArea
+            {
+               id:treeQuest
+                aX: 300
+                aY: 400
+                aSize: 200
+                text: "А это просто дерево :3/Оно демонстрирует работу\nквестов!/"
+                pred: 0
+                int_id: 1
+                aColor: "#7dc4fa"
+                aSpriteSize: 350
+                aSpriteSource: "qrc:/res/GameAssets/statickAssets/holetree.png"
+            }
             QuestArea
             {
                id:testQuest
@@ -158,20 +179,6 @@ Item {
                 aColor: "#7dc4fa"
                 aSpriteSize: 100
                 aSpriteSource: "qrc:/res/GameAssets/statickAssets/ah.png"
-            }
-
-            QuestArea
-            {
-               id:treeQuest
-                aX: 300
-                aY: 400
-                aSize: 200
-                text: "А это просто дерево :3/Оно демонстрирует работу\nквестов!/"
-                pred: -1
-                int_id: 1
-                aColor: "#7dc4fa"
-                aSpriteSize: 350
-                aSpriteSource: "qrc:/res/GameAssets/statickAssets/holetree.png"
             }
             ActorController
             {
