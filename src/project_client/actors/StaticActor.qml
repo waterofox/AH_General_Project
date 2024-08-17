@@ -6,8 +6,8 @@ Item {
     width: 1000*forsW/standartScale
     height: 1000*forsH/standartScaleY
 
-    property int forsW: 0
-    property int forsH: 0
+    property int forsW: sceneroot.pWidth
+    property int forsH: sceneroot.pHeight
 
     property double standartScale: 600.0
     property double standartScaleY: 360.0

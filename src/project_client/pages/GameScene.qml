@@ -11,7 +11,7 @@ Item {
     visible: true
     property int pWidth: 0
     property int pHeight: 0
-    property int cameraSlideDuration: 2000
+    property int cameraSlideDuration: 1000
     property bool  st: false
 
     function eventPressedFilter(event)
@@ -140,7 +140,7 @@ Item {
         Rectangle
         {
             id:sceneRoot
-            width: 1800*pWidth/standartScale
+            width: 600*pWidth/standartScale
             height: 1080*pHeight/standartScaleY
             color: "transparent"
 
@@ -153,46 +153,17 @@ Item {
 
               Каждый КВЕСТ создаётся в последовательности, которая тянется снизу ввурх. (Т.е вверх по коду).
             */
-
-            QuestArea
-            {
-               id:treeQuest
-                aX: 300
-                aY: 400
-                aSize: 200
-                text: "А это просто дерево :3/Оно демонстрирует работу\nквестов!/"
-                pred: 0
-                int_id: 1
-                aColor: "#7dc4fa"
-                aSpriteSize: 350
-                aSpriteSource: "qrc:/res/GameAssets/statickAssets/holetree.png"
-            }
-            QuestArea
-            {
-               id:testQuest
-                aX: 30
-                aY: 100
-                aSize: 100
-                text: "Добро пожаловать в AH GENERAL\nPROJECT!/Этот проект посвящён\nразработке видео игры!/Суть в том, что игра пишется \nбез помощи игрового движка./Автор очень нуждается в вашей \nподдержке!/Можно переводом на Сбер или\nТинькофф:\n +7тут мог быть мой номер/"
-                pred: -1
-                int_id: 0
-                aColor: "#7dc4fa"
-                aSpriteSize: 100
-                aSpriteSource: "qrc:/res/GameAssets/statickAssets/ah.png"
-            }
             ActorController
             {
                 id:player
-                actualW: 30
-                actualH: 50
-                actualX: 150
+                actualW: 60
+                actualH: 100
+                actualX: 265
                 actualY: 220
-                actualSpeed: 1
+                actualSpeed: 2
+                spriteSize: 200
                 moveDownSprite: "qrc:/ani/GameAssets/animations/movef.gif"
                 moveUpSprite: "qrc:/ani/GameAssets/animations/moveb.gif"
-                forsH:sceneroot.pHeight
-                forsW: sceneroot.pWidth
-
             }
             Rectangle
             {

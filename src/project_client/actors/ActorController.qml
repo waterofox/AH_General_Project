@@ -8,8 +8,8 @@ Item {
     width: parent.width
     height: parent.height
 
-    property int forsW: 0
-    property int forsH: 0
+    property int forsW: sceneroot.pWidth
+    property int forsH: sceneroot.pHeight
 
     property int standartScale:  600
     property int standartScaleY: 360
@@ -24,8 +24,8 @@ Item {
     property int scaledW: actualW*actorRoot.forsW/  standartScale
     property int scaledH: actualH*actorRoot.forsH/standartScaleY
 
-    property int actualSpeed: 0
-    property int scaledSpeed: actualSpeed*actorRoot.forsW/standartScale
+    property double actualSpeed: 0
+    property double scaledSpeed: actualSpeed//*actorRoot.forsW/standartScale
 
     property bool nstart: false
 
@@ -48,6 +48,7 @@ Item {
     property string moveUpSprite: "none"
     property string moveDownSprite: "none"
     property string moveLNRSprite: "none"
+    property int spriteSize: 100
 
     property int actualHP: 5
 
@@ -324,14 +325,14 @@ Item {
                     //for idle sprite
                     source: "qrc:/ani/GameAssets/animations/movef.gif"
 
-                    Layout.minimumHeight: 100*actorRoot.forsH/standartScaleY
-                    Layout.minimumWidth: 100*actorRoot.forsW/standartScale
+                    Layout.minimumHeight: spriteSize*actorRoot.forsH/standartScaleY
+                    Layout.minimumWidth: spriteSize*actorRoot.forsW/standartScale
 
-                    Layout.maximumHeight: 100*actorRoot.forsH/standartScaleY
-                    Layout.maximumWidth: 100*actorRoot.forsW/standartScale
+                    Layout.maximumHeight: spriteSize*actorRoot.forsH/standartScaleY
+                    Layout.maximumWidth: spriteSize*actorRoot.forsW/standartScale
                     Layout.alignment: Qt.AlignTop
 
-                    Layout.topMargin: -50*actorRoot.forsH/standartScaleY
+                    Layout.topMargin: -(spriteSize/2)*actorRoot.forsH/standartScaleY
                     paused: anis
                     onPausedChanged: actorSprite.currentFrame = 2
                 }

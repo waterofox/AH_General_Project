@@ -12,17 +12,27 @@
         <file>tools/QuestArea.qml</file>
     </qresource>
     <qresource prefix="/res">
-        <file>GameAssets/statickAssets/doubletree.png</file>
-        <file>GameAssets/statickAssets/holetree.png</file>
-        <file>GameAssets/statickAssets/tree.png</file>
-        <file>GameAssets/statickAssets/xmastree.png</file>
-        <file>GameAssets/statickAssets/xmastreeSAD.png</file>
-        <file>GameAssets/statickAssets/ah.png</file>
+        <file>GameAssets/statickAssets/buildings/blueCar00.png</file>
+        <file>GameAssets/statickAssets/buildings/blueCar10.png</file>
+        <file>GameAssets/statickAssets/buildings/blueCarBre00.png</file>
+        <file>GameAssets/statickAssets/buildings/blueCarBre10.png</file>
+        <file>GameAssets/statickAssets/buildings/redHouse00.png</file>
+        <file>GameAssets/statickAssets/buildings/redHouse01.png</file>
+        <file>GameAssets/statickAssets/buildings/redHouse10.png</file>
+        <file>GameAssets/statickAssets/buildings/redHouse11.png</file>
+        <file>GameAssets/statickAssets/terrain/elka.png</file>
+        <file>GameAssets/statickAssets/terrain/elka2.png</file>
+        <file>GameAssets/statickAssets/terrain/elka3.png</file>
+        <file>GameAssets/statickAssets/terrain/roadH.png</file>
+        <file>GameAssets/statickAssets/terrain/roadHV.png</file>
+        <file>GameAssets/statickAssets/terrain/roadV.png</file>
     </qresource>
     <qresource prefix="/ani">
         <file>GameAssets/animations/movef.gif</file>
         <file>GameAssets/animations/moveb.gif</file>
         <file>GameAssets/animations/ahdialog.gif</file>
+        <file>GameAssets/animations/idle/ahIdle.png</file>
+        <file>GameAssets/animations/scene/fire.png</file>
     </qresource>
     <qresource prefix="/fon">
         <file>GameAssets/fonts/EpilepsySans.ttf</file>
