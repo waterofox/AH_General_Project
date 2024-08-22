@@ -42,14 +42,14 @@ ApplicationWindow {
         {
             id:rootGame
 
-            function setCurrentIndeGame(index) {rootGame.currentIndex = index}
+            function setCurrentIndexGame(index) {rootGame.currentIndex = index}
 
             currentIndex: 0
             width: rootHotel.width
             height: rootHotel.height
             interactive: false
 
-            GameScene
+            GameSceneEngine
             {
                 id: index1
                 pHeight: rootGame.height

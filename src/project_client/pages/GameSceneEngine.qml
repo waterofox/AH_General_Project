@@ -5,6 +5,7 @@ import SSS 1.0
 import QuestM 1.0
 import "../actors"
 import "../tools"
+import "game scenes"
 
 Item {
     id:sceneroot
@@ -14,15 +15,16 @@ Item {
     property int cameraSlideDuration: 1000
     property bool  st: false
 
+    signal toEventPressedSifon(event: variant)
+    signal toEventReleasedSifon(event: variant)
+
     function eventPressedFilter(event)
     {
-        player.set(event);
-        testQuest.eventFilter(event)
-
+        toEventPressedSifon(event)
     }
     function eventReleasedFilter(event)
     {
-        player.set2(event);
+        toEventReleasedSifon(event)
     }
     function nextUpLevel(){goUp.start();}
     function nextDownLevel(){goDown.start();}
@@ -32,7 +34,8 @@ Item {
     {
         anchors.fill: parent
         //color: "#2E8B57"
-        color: '#696969'
+        //color: '#696969'
+        color: '#E4ECEC'
     }
 
     Component.onCompleted: {}
@@ -48,18 +51,6 @@ Item {
     QuestManger
     {
         id:questManager
-    }
-    Connections
-    {
-        target: questManager
-        onShowQuest: {
-            player.set_mess(text)
-            player.visDialogWindiw = true
-        }
-        onEndQuest:{
-            player.visDialogWindiw = false
-            player.set_mess("")
-        }
     }
     Connections
     {
@@ -137,34 +128,13 @@ Item {
 
 
 
-        Rectangle
+        BasickScene
         {
             id:sceneRoot
-            width: 600*pWidth/standartScale
-            height: 1080*pHeight/standartScaleY
-            color: "transparent"
+            SceneOneWinterForest
+            {}
 
-
-            //place for our actors on game scene
-            /*
-              Сюда следует размещать актёров и квесты для создания рабочей игровой сцены.
-
-              Каждый АКТЁР представляет из себя отдельный новый слой. Учитывайте это, когда будете продумывать порядок добавления их на игровую сцену
-
-              Каждый КВЕСТ создаётся в последовательности, которая тянется снизу ввурх. (Т.е вверх по коду).
-            */
-            ActorController
-            {
-                id:player
-                actualW: 60
-                actualH: 100
-                actualX: 265
-                actualY: 220
-                actualSpeed: 2
-                spriteSize: 200
-                moveDownSprite: "qrc:/ani/GameAssets/animations/movef.gif"
-                moveUpSprite: "qrc:/ani/GameAssets/animations/moveb.gif"
-            }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             Rectangle
             {
                 color:"transparent"

@@ -23,7 +23,7 @@ void QuestManager::reg_new_quest(const int& id, const QString& mes, const bool& 
 
     this->quests_list.insert(id,new_quest);
 
-    //qDebug() << "BUILD " << new_quest.the_point_before_id;
+    qDebug() << "BUILD " << new_quest.the_point_before_id;
 }
 
 void QuestManager::rewrite_quests_position(const int &X, const int &Y, const int &height, const int &width, const int &id)

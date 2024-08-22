@@ -4,6 +4,7 @@ Item {
     visible: true
     id: root
     anchors.fill: parent
+
     property bool isActive: true
     property int int_id: 0
     property string text: "none"
@@ -13,9 +14,7 @@ Item {
     property int aX: 0
     property int aY: 0
 
-    property string aColor: "transparent"
-
-    property string actualColor: "white"
+    property string aColor: "blue"
 
     property string aSpriteSource: "None"
     property int aSpriteSize: 0
@@ -24,14 +23,12 @@ Item {
 
     StaticActor
     {
+        visible: true
         id:area
         actualSize: aSize
         actualXCord: aX
         actualYCord: aY
         actualColor: aColor
-        forsH:sceneroot.pHeight
-        forsW: sceneroot.pWidth
-        spriteSize: aSpriteSize
         spriteSource: aSpriteSource
     }
 
@@ -44,7 +41,7 @@ Item {
     Component.onCompleted:
     {
         questManager.reg_new_quest(int_id,text,isActive,pred);
-        questManager.rewrite_quests_position(area.scaledX,area.scaledY,area.scaledHeight,area.scaledWidth,int_id);
+        questManager.rewrite_quests_position(area.getScaledX(),area.getScaledY(),area.getScaledHeight(),area.getScaledWidth(),int_id);
     }
 
 }

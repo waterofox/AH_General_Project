@@ -324,6 +324,7 @@ Item {
                     id: actorSprite
                     //for idle sprite
                     source: "qrc:/ani/GameAssets/animations/movef.gif"
+                    smooth: false
 
                     Layout.minimumHeight: spriteSize*actorRoot.forsH/standartScaleY
                     Layout.minimumWidth: spriteSize*actorRoot.forsW/standartScale

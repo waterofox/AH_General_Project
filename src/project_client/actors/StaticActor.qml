@@ -3,26 +3,32 @@ import QtQuick.Layouts
 import QtQuick.Controls
 Item {
     id:actorRoot
-    width: 1000*forsW/standartScale
-    height: 1000*forsH/standartScaleY
+    width: sceneRoot.sceneWidth*internal.forsW/standartScale
+    height: sceneRoot.sceneHeight*internal.forsH/standartScaleY
 
-    property int forsW: sceneroot.pWidth
-    property int forsH: sceneroot.pHeight
-
-    property double standartScale: 600.0
-    property double standartScaleY: 360.0
     property int actualXCord: 0
     property int actualYCord: 0
     property int actualSize: 10
     property string actualColor: "white"
-
-    property int scaledX: actualXCord*forsW/standartScale
-    property int scaledY: actualYCord*forsH/standartScaleY
-    property int scaledWidth: actualSize*forsW /standartScale
-    property int scaledHeight: actualSize*forsH/standartScaleY
+    property int spriteframeCount: 1
 
     property string spriteSource: "None"
-    property int spriteSize: 0
+
+    function getScaledHeight(){return internal.scaledHeight}
+    function getScaledWidth() {return internal.scaledWidth }
+    function getScaledX(){return internal.scaledX}
+    function getScaledY(){return internal.scaledY}
+    QtObject
+    {
+        id:internal
+        property int scaledX: actualXCord*forsW/standartScale
+        property int scaledY: actualYCord*forsH/standartScaleY
+        property int scaledWidth: actualSize*forsW /standartScale
+        property int scaledHeight: actualSize*forsH/standartScaleY
+
+        property int forsW: sceneroot.pWidth
+        property int forsH: sceneroot.pHeight
+    }
     RowLayout
     {
         id: stArea
@@ -33,34 +39,32 @@ Item {
             id: actor
             color:  actualColor
 
-            Layout.maximumHeight: scaledHeight
-            Layout.maximumWidth:  scaledWidth
+            Layout.maximumHeight: internal.scaledHeight
+            Layout.maximumWidth:  internal.scaledWidth
 
             Layout.fillHeight: true
             Layout.fillWidth: true
 
             Layout.alignment: Qt.AlignTop
-            Layout.topMargin: scaledY
-            Layout.leftMargin: scaledX
+            Layout.topMargin: internal.scaledY
+            Layout.leftMargin: internal.scaledX
 
-            RowLayout
+            AnimatedSprite
             {
-                id: actorSpriteRoot
-                anchors.centerIn: parent
+                id:sprite
 
-                Image {
-                    id: spite
-                    source: spriteSource
-                    Layout.minimumHeight: spriteSize*actorRoot.forsH/standartScaleY
-                    Layout.minimumWidth: spriteSize*actorRoot.forsW/standartScale
+                anchors.fill: parent
 
-                    Layout.maximumHeight: spriteSize*actorRoot.forsH/standartScaleY
-                    Layout.maximumWidth: spriteSize*actorRoot.forsW/standartScale
-                    Layout.alignment: Qt.AlignTop
+                source: spriteSource
+                smooth: false
+                interpolate: false
 
+                frameWidth: 64
+                frameHeight: 64
 
-                    Layout.topMargin: (spriteSize/2)*(-1)*actorRoot.forsH/standartScaleY
-                }
+                frameCount: spriteframeCount
+
+                Component.onCompleted: {sprite.start()}
             }
         }
     }

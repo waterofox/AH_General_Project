@@ -5,11 +5,14 @@
         <file>pages/qmldir</file>
         <file>actors/ActorController.qml</file>
         <file>actors/StaticActor.qml</file>
-        <file>pages/GameScene.qml</file>
+        <file>pages/GameSceneEngine.qml</file>
         <file>tools/CollisionRad.qml</file>
         <file>tools/GameLabel.qml</file>
         <file>tools/HPbar.qml</file>
         <file>tools/QuestArea.qml</file>
+        <file>tools/BasickScene.qml</file>
+        <file>tools/GameScene.qml</file>
+        <file>pages/game scenes/SceneOneWinterForest.qml</file>
     </qresource>
     <qresource prefix="/res">
         <file>GameAssets/statickAssets/buildings/blueCar00.png</file>
