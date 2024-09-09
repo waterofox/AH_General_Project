@@ -1,5 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Layouts
+import QtQuick
+import QtQuick.Controls
+import QtQml
 import CTS 1.0
 import SSS 1.0
 import QuestM 1.0
@@ -34,23 +37,13 @@ Item {
     {
         anchors.fill: parent
         //color: "#2E8B57"
-        //color: '#696969'
-        color: '#E4ECEC'
+        color: '#696969'
     }
 
-    Component.onCompleted: {}
-    CollisionTargetSystem
-    {
-        id:targetSystem
-    }
     SwitchSectorSystem
     {
         id:switchSystem
         Component.onCompleted: {st = true;switchSystem.update_level_size(camera.height,camera.width)}
-    }
-    QuestManger
-    {
-        id:questManager
     }
     Connections
     {
@@ -127,25 +120,70 @@ Item {
         }
 
 
-
-        BasickScene
+        Rectangle
         {
-            id:sceneRoot
-            SceneOneWinterForest
-            {}
+            id: engine
+            anchors.fill: parent
+            property string currentSceneURL: ""
+            property var scene: 0
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            Rectangle
+            function set_cuurent_scene(scene_url)
             {
-                color:"transparent"
-                border
+                engine.currentSceneURL = scene_url;
+            }
+
+            onCurrentSceneURLChanged:
+            {
+                if(scene != 0)
                 {
-                    color:"red"
-                    width:4
+                    console.log("hoho")
+                    engine.scene.destroy()
                 }
-                anchors.fill: sceneRoot
+                engine.scene = Qt.createComponent(engine.currentSceneURL)
+                engine.scene = engine.scene.createObject(sceneRoot)
+            }
+            Component.onCompleted:
+            {
+                engine.currentSceneURL = "qrc:/qml/pages/game scenes/SceneOneWinterForest.qml";
+            }
+
+
+            BasickScene
+            {
+                id:sceneRoot
+                visible: true
+
+                Rectangle
+                {
+                    color:"transparent"
+                    border
+                    {
+                        color:"red"
+                        width:4
+                    }
+                    anchors.fill: sceneRoot
+                }
             }
         }
-
+        Button
+        {
+            x: 0
+            y:0
+            height: 100
+            width: 100
+            property int ch: 1
+            onClicked: {
+                if(ch == 0)
+                {
+                    engine.set_cuurent_scene("qrc:/qml/pages/game scenes/SceneTwoTestSceneCar.qml")
+                    ch = 1
+                }
+                else
+                {
+                    engine.set_cuurent_scene("qrc:/qml/pages/game scenes/SceneOneWinterForest.qml")
+                    ch = 0
+                }
+            }
+        }
     }
 }

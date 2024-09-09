@@ -9,10 +9,11 @@
         <file>tools/CollisionRad.qml</file>
         <file>tools/GameLabel.qml</file>
         <file>tools/HPbar.qml</file>
-        <file>tools/QuestArea.qml</file>
         <file>tools/BasickScene.qml</file>
         <file>tools/GameScene.qml</file>
         <file>pages/game scenes/SceneOneWinterForest.qml</file>
+        <file>pages/game scenes/SceneTwoTestSceneCar.qml</file>
+        <file>tools/Quest.qml</file>
     </qresource>
     <qresource prefix="/res">
         <file>GameAssets/statickAssets/buildings/blueCar00.png</file>

@@ -1,9 +1,19 @@
 import QtQuick 2.15
 import "../../tools"
 import "../../actors"
+import CTS
+import QuestM
 GameScene
 {
-
+    color: '#E4ECEC'
+    CollisionTargetSystem
+    {
+        id:targetSystem
+    }
+    QuestManger
+    {
+        id:questManager
+    }
     //place for our actors on game scene
     /*
       Сюда следует размещать актёров и квесты для создания рабочей игровой сцены.
@@ -156,24 +166,6 @@ GameScene
         actualColor: "transparent"
         spriteSource: 'qrc:/res/GameAssets/statickAssets/terrain/elka3.png'
     }
-
-    ///
-
-    QuestArea
-    {
-        id:testQuest
-        aColor: "transparent"
-        aSize: 200
-        aX: 100
-        aY: 450
-
-        isActive: true
-        int_id: 0
-        pred: -1
-
-        text: "Hello Stranger!/Nice to meet you!/You should visit our beautiful town.../Wich name is 'Foxville'!/Good Luck!/"
-    }
-
     StaticActor
     {
         actualSize: 200
@@ -182,5 +174,13 @@ GameScene
         actualColor: "transparent"
         spriteSource: "qrc:/ani/GameAssets/animations/idle/ahIdle.png"
         spriteframeCount: 10
+        Quest
+        {
+            id:testQuest
+            int_id: 0
+            pred:-1
+            isActive: true
+            text: "hello/"
+        }
     }
 }

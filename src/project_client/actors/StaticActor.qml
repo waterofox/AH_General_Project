@@ -3,8 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 Item {
     id:actorRoot
-    width: sceneRoot.sceneWidth*internal.forsW/standartScale
-    height: sceneRoot.sceneHeight*internal.forsH/standartScaleY
+    anchors.fill: parent
 
     property int actualXCord: 0
     property int actualYCord: 0
@@ -14,10 +13,14 @@ Item {
 
     property string spriteSource: "None"
 
+    property int scaledWidth: actualSize*internal.forsW /standartScale
+
     function getScaledHeight(){return internal.scaledHeight}
     function getScaledWidth() {return internal.scaledWidth }
     function getScaledX(){return internal.scaledX}
     function getScaledY(){return internal.scaledY}
+
+    signal signaltoScale();
     QtObject
     {
         id:internal
@@ -29,6 +32,7 @@ Item {
         property int forsW: sceneroot.pWidth
         property int forsH: sceneroot.pHeight
     }
+    onScaledWidthChanged: signaltoScale()
     RowLayout
     {
         id: stArea

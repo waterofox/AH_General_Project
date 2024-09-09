@@ -1,8 +1,11 @@
 import QtQuick 2.15
-
+import CTS
+import QuestM
 Rectangle
 {
+
     anchors.fill: parent
+    property bool isActiveScene:true
     focus: true
     Connections
     {
@@ -24,11 +27,13 @@ Rectangle
     }
     function eventPressedFilter(event)
     {
+        if(!isActiveScene){return}
         player.set(event);
         testQuest.eventFilter(event)
     }
     function eventReleasedFilter(event)
     {
+        if(!isActiveScene){return}
         player.set2(event);
     }
 }

@@ -87,15 +87,17 @@ bool QuestManager::is_some_quest(const int &X, const int &Y)
     }
     for(int i = 0; i < this->quests_list.size(); ++i)
     {
+        qDebug()<<"player: " << X <<' '  << Y;
         quest_area quest = this->quests_list[i];
+        qDebug() << quest.area_cords.X << ' ' << quest.area_cords.Y;
         if(X > quest.area_cords.X and Y > quest.area_cords.Y)
         {
             if( X < quest.area_cords.X+quest.area_width and Y < quest.area_cords.Y + quest.area_height)
             {
-                //qDebug() << "pred quest is: " << quest.the_point_before_id;
+                qDebug() << "pred quest is: " << quest.the_point_before_id;
                 if(quest.the_point_before_id != -1)
                 {
-                    //qDebug() << "ЗАВИСИМЫЙ КВЕСТ " << this->ended_quests << ' ' << quest.the_point_before_id;
+                    qDebug() << "ЗАВИСИМЫЙ КВЕСТ " << this->ended_quests << ' ' << quest.the_point_before_id;
                     if(!this->ended_quests.contains(quest.the_point_before_id))
                     {
                         return false;
@@ -109,6 +111,7 @@ bool QuestManager::is_some_quest(const int &X, const int &Y)
             }
         }
     }
+
     return false;
 }
 
